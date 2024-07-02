@@ -1,5 +1,17 @@
 # README
 
+## To create new app in this repo
+
+Go to the outer **hello** directory, where the **manage.py** is located. Start a new app in this directory. The outer **hello** is the **project directory**.
+
+```
+cd hello\
+python manage.py startapp home
+python manage.py check
+```
+
+# Useful info for deployment to Azure web apps
+
 ## Add a startup command
 
 This is following the suggestion in [Example startup commands](https://learn.microsoft.com/en-us/azure/app-service/configure-language-python#example-startup-commands)
