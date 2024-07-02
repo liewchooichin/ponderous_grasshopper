@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     # following cors example
     'rest_framework',
     'corsheaders',
+    'home',
 ]
 
 # Following the cors example

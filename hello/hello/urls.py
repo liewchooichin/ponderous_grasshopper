@@ -19,7 +19,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# from github template
 from hello.core import views as hello_views
+
+# from tutorial
+from home import views as home_views
+
 
 urlpatterns = [
     # added by the github template
@@ -28,6 +33,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # added by the github template
     path("__reload__/", include("django_browser_reload.urls")),
+    # from tutorial
+    path(route="credits/", view=home_views.credits, name="credits")
 ]
 
 if settings.DEBUG:
