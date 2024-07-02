@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "ms-vscode.azurecli",
+        "ms-azuretools.vscode-azureappservice"
+    ]
+}
