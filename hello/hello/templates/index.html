@@ -29,6 +29,8 @@
 
             <!--Start added by me-->
             <p>Today: {{ today }}</p>
+            <p>{% now 'd' %}-{% now 'M' %}-{% now 'Y'%}, {% now 'H' %}:{% now 'i' %}</p>
+            <p>It is {% now "jS F Y H:i" %}</p>
             <!--End added by me-->
 
         </header>

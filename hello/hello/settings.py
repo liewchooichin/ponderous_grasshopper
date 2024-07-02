@@ -84,7 +84,9 @@ ROOT_URLCONF = 'hello.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'hello' / 'templates'],
+        'DIRS': [BASE_DIR / 'hello' / 'templates',
+                 BASE_DIR / 'templates',
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,7 +115,7 @@ DATABASES = {
         'PASSWORD': config("SQL_PASSWORD",""),
         'OPTIONS': {
 	            'driver': config('SQL_DRIVER', ""),
-                'timeout': 1200,
+                'timeout': 600,
 	        },
         'CONN_HEALTH_CHECKS': True,
     }

@@ -10,6 +10,12 @@ python manage.py startapp home
 python manage.py check
 ```
 
+## Location for templates
+
+Location for **templates** is usually in the same level as the **manage.py** directory. Whether to place the **templates** in the **project** or the **app** directory is a matter of choice. Placing all `html` in the project directory is the approach in *Django in Action*.
+
+
+
 # Useful info for deployment to Azure web apps
 
 ## Add a startup command

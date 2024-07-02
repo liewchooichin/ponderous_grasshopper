@@ -37,7 +37,7 @@ urlpatterns = [
     path(route="credits/", view=home_views.credits, name="credits"),
     path(route="about/", view=home_views.about, name="about"),
     path(route="version/", view=home_views.version, name="version"),
-
+    path(route="news/", view=home_views.news, name="news"),
 ]
 
 if settings.DEBUG:
