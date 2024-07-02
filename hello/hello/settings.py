@@ -111,7 +111,7 @@ DATABASES = {
         'USER': config("SQL_USER",""),
         'PASSWORD': config("SQL_PASSWORD",""),
         'OPTIONS': {
-	            'driver': 'ODBC Driver 18 for SQL Server',
+	            'driver': config('SQL_DRIVER', ""),
                 'timeout': 1200,
 	        },
         'CONN_HEALTH_CHECKS': True,
