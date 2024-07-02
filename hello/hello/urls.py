@@ -34,7 +34,10 @@ urlpatterns = [
     # added by the github template
     path("__reload__/", include("django_browser_reload.urls")),
     # from tutorial
-    path(route="credits/", view=home_views.credits, name="credits")
+    path(route="credits/", view=home_views.credits, name="credits"),
+    path(route="about/", view=home_views.about, name="about"),
+    path(route="version/", view=home_views.version, name="version"),
+
 ]
 
 if settings.DEBUG:
