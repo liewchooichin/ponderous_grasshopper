@@ -4,6 +4,8 @@ from django.shortcuts import render
 
 from django.http import HttpResponse, JsonResponse
 from django.template import Template, Context, Engine
+from django.utils import safestring, html
+
 
 def credits(request):
     """Return the credits message"""
@@ -23,6 +25,7 @@ def version(request):
     return JsonResponse(data=data)
 
 def news(request):
+    """News of the website"""
     data = {
         'news': [
             'RiffMates now has a news page',
@@ -35,10 +38,19 @@ def news(request):
                  )
 
 def experiment_escape(request):
+    """Turning escape on and off"""
     engine = Engine.get_default()
     engine.get_default()
     #t = engine.get_template("experiment.html")
-    data = {"instrument": "<b>tuba<b> > <b>baritone<b>"}
+    # Using default auto-escape of the engine. This is without the mark_safe.
+    #data = {"instrument": "<b>tuba</b> --> <-- <b>baritone</b>"}
+    # This is with mark_safe. mark_safe can only be used with individual string.
+    #value = safestring.mark_safe("<b>tuba</b> --> <br> <-- <b>baritone</b> <br> trumpet")
+    #data = {"instrument": value}
+    # Using html.format_html to mark a chunk of html content.
+    name = "French horn"
+    value = html.format_html("big <i>{}</i>", name)
+    data = {"instrument": value}
     return render(request=request, template_name="experiment.html" , context=data)
 
     

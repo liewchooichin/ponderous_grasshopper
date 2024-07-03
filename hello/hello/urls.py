@@ -39,7 +39,7 @@ urlpatterns = [
     path(route="version/", view=home_views.version, name="version"),
     path(route="news/", view=home_views.news, name="news"),
     # experiments
-    path(route="experiment_escape", view=home_views.experiment_escape, name="experiment_escape"),
+    path(route="experiment_escape/", view=home_views.experiment_escape, name="experiment_escape"),
 ]
 
 if settings.DEBUG:
