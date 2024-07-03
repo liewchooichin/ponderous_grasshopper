@@ -1,0 +1,27 @@
+<!-- RiffMates/templates/experiment.html -->
+ <!-- Experiment with Django auto-escaping -->
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Experiment</title>
+</head>
+
+<body>
+    <h1>Experiment</h1>
+    
+    <p>
+    I love the sound a {{ instrument | escape}} makes.
+    </p>
+
+    <p>
+    A shiny {{ instrument | safe }} is good.
+    </p>
+
+    <p>
+    {% autoescape  off %}
+    Don't put a {{ instrument }} too close to your ear.
+    {% endautoescape %}
+    </p>
+
+</body>
+</html>
