@@ -1,0 +1,23 @@
+<!-- RiffMates/templates/news2.html -->
+{% extends "base.html" %}
+
+{% block title %}
+    {# block.super uses the title of the parent block. #}
+    {{block.super}}: Experiment 2
+{% endblock %}
+
+{% block content %}
+    <h1>Experiment (2)</h1>
+
+    <p>
+    {% if prev %}
+        <a href="?page={{prev}}">Prev</a>
+    {% endif %}
+    
+    {% if next %}
+        <a href="?page={{next}}">Next</a>
+    {% endif %}
+    </p>
+    
+
+{% endblock content %}

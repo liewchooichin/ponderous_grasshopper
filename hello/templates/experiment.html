@@ -9,6 +9,8 @@
 <body>
     <h1>Experiment</h1>
     
+    <h2>Auto escape</h2>
+
     <p>
     I love the sound a {{ instrument | escape}} makes.
     </p>
@@ -21,6 +23,20 @@
     {% autoescape  off %}
     Don't put a {{ instrument }} too close to your ear.
     {% endautoescape %}
+    </p>
+
+    <h2>
+        Experiment with &#x7B;&#x25; include &#x25;&#x7D;<br>
+        This is also possible&mdash;using <code>safe</code> filter of Django 
+        {{ "{%" | safe }} include {{ "%}" | safe }}
+    </h2>
+    <p>
+        {% include "news2.html" %}
+    </p>
+
+    <h2>Passing tags value with {{ "{%" | safe }} include {{ "%}" | safe }}</h2>
+    <p>
+        {% include "experiment2.html" with prev=4 next=6 %}
     </p>
 
 </body>

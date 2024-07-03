@@ -9,7 +9,7 @@ from django.utils import safestring, html
 
 def credits(request):
     """Return the credits message"""
-    content = "Django in Action"
+    content = "Credits: Django in Action"
 
     return HttpResponse(content=content, content_type="text/plain")
     
@@ -33,7 +33,7 @@ def news(request):
         ],
     }        
     return render(request=request,
-                  template_name='news.html', 
+                  template_name='news2.html', 
                   context=data,
                  )
 
@@ -54,3 +54,18 @@ def experiment_escape(request):
     return render(request=request, template_name="experiment.html" , context=data)
 
     
+def starter_bootstrap(request):
+    """Bootstrap starter sample"""
+    return render(request=request, template_name="starter_bootstrap.html", context={})
+
+def base_bootstrap(request):
+    """Base html with starter Bootstrap sample"""
+    data = {
+        "title": "Home",
+        "brand": "RiffMates",
+        "homepage": "hello_view",
+        "credits": "credits",
+        "about": "about",
+        "urls": ["news", "experiment_escape"],
+    }
+    return render(request=request, template_name="base_bootstrap.html", context=data)

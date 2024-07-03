@@ -28,7 +28,7 @@ from home import views as home_views
 
 urlpatterns = [
     # added by the github template
-    path("", hello_views.index),
+    path(route="", view=hello_views.index, name="hello_view"),
     # original admin site
     path('admin/', admin.site.urls),
     # added by the github template
@@ -40,6 +40,9 @@ urlpatterns = [
     path(route="news/", view=home_views.news, name="news"),
     # experiments
     path(route="experiment_escape/", view=home_views.experiment_escape, name="experiment_escape"),
+    path(route="starter_bootstrap/", view=home_views.starter_bootstrap, name="starter_bootstrap"),
+    path(route="base_bootstrap/", view=home_views.base_bootstrap,
+         name="base_bootstrap"),
 ]
 
 if settings.DEBUG:
