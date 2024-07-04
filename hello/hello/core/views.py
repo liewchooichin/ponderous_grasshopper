@@ -8,4 +8,4 @@ def index(request):
         "title": "Django example",
         "today": str(datetime.today()),
     }
-    return render(request, "index.html", context)
+    return render(request, "hello_index.html", context)

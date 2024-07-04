@@ -1,0 +1,12 @@
+<svg version="1.1"
+     width="40" height="40"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <rect width="40" height="40" fill="lawngreen" />
+
+  <circle cx="20" cy="20" r="10" fill="yellow" />
+
+  <text x="20" y="20" font-size="4" text-anchor="middle" fill="white">
+  Hi</text>
+
+</svg>

@@ -28,12 +28,13 @@ from home import views as home_views
 
 urlpatterns = [
     # added by the github template
-    path(route="", view=hello_views.index, name="hello_view"),
+    path(route="hello_world/", view=hello_views.index, name="hello_view"),
     # original admin site
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name="admin"),
     # added by the github template
     path("__reload__/", include("django_browser_reload.urls")),
     # from tutorial
+    path(route="", view=home_views.index, name="index"),
     path(route="credits/", view=home_views.credits, name="credits"),
     path(route="about/", view=home_views.about, name="about"),
     path(route="version/", view=home_views.version, name="version"),
@@ -41,8 +42,8 @@ urlpatterns = [
     # experiments
     path(route="experiment_escape/", view=home_views.experiment_escape, name="experiment_escape"),
     path(route="starter_bootstrap/", view=home_views.starter_bootstrap, name="starter_bootstrap"),
-    path(route="base_bootstrap/", view=home_views.base_bootstrap,
-         name="base_bootstrap"),
+    #path(route="base_bootstrap/", view=home_views.base_bootstrap,
+         #name="base_bootstrap"),
 ]
 
 if settings.DEBUG:

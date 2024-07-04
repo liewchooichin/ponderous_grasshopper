@@ -1,18 +1,15 @@
 <!-- RiffMates/templates/news2.html -->
-{% extends "base_bootstrap.html" %}
-
-{% block title %}
-    {# block.super uses the title of the parent block. #}
-    {{block.super}}: News
-{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
-    <h1>RiffMates News (2)</h1>
+    <h1>RiffMates News</h1>
 
+    <p>
     <ul>
-    {% for item in news %}
-    <li>{{ item }}</li>
-    {% endfor %}
+        {% for item in news %}
+            <li>{{ item }}</li>
+        {% endfor %}
     </ul>
+    </p>
 
 {% endblock content %}

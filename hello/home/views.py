@@ -6,11 +6,20 @@ from django.http import HttpResponse, JsonResponse
 from django.template import Template, Context, Engine
 from django.utils import safestring, html
 
+# global variable for index page
+global index_data
+index_data = {
+    "title": "Home",
+    "brand": "RiffMates",
+    "homepage": "hello_view",
+    "credits": "credits",
+    "about": "about",
+    "urls": ["news", "experiment_escape"],
+}
 
 def credits(request):
     """Return the credits message"""
     content = "Credits: Django in Action"
-
     return HttpResponse(content=content, content_type="text/plain")
     
 
@@ -26,12 +35,15 @@ def version(request):
 
 def news(request):
     """News of the website"""
-    data = {
+    data = index_data
+    data.update({
         'news': [
             'RiffMates now has a news page',
             'RiffMates has its first web page',
         ],
-    }        
+        'title': "News",
+    })
+          
     return render(request=request,
                   template_name='news2.html', 
                   context=data,
@@ -58,9 +70,10 @@ def starter_bootstrap(request):
     """Bootstrap starter sample"""
     return render(request=request, template_name="starter_bootstrap.html", context={})
 
-def base_bootstrap(request):
+def index(request):
     """Base html with starter Bootstrap sample"""
-    data = {
+    #global index_data
+    index_data = {
         "title": "Home",
         "brand": "RiffMates",
         "homepage": "hello_view",
@@ -68,4 +81,4 @@ def base_bootstrap(request):
         "about": "about",
         "urls": ["news", "experiment_escape"],
     }
-    return render(request=request, template_name="base_bootstrap.html", context=data)
+    return render(request=request, template_name="base.html", context=index_data)
