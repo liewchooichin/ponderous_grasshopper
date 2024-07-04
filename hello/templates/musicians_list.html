@@ -1,0 +1,21 @@
+<!--hello/templates/musician.html-->
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Musicians</h1>
+
+    <p>
+        <ul class="list-group">
+            {% for m in musicians %}
+            <li class="list-group-item">
+                <a href="{% url "musician_detail" m.id %}">
+                    {{ m.first_name }} {{ m.last_name }}
+                </a>
+            </li>
+            {% empty %}
+            <li class="list-group-item">No musicians in the database</li>
+            {% endfor %}
+        </ul>
+    </p>
+{% endblock content %}

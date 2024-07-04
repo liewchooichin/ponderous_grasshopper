@@ -1,0 +1,12 @@
+<!--hello/templates/musician.html-->
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Musician details</h1>
+
+    <p>
+        {{ musician.first_name}} {{ musician.last_name}}
+        was born on {{ musician.birth}}.
+    </p>
+{% endblock content %}

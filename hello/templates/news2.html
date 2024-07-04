@@ -10,10 +10,13 @@
         <!--First item-->
         {% if forloop.first %}
             <li class="list-group-item active">
-                {{ item.0 }}: {{ item.1 }}</li>
+                {{ item.0 }}: {{ item.1 }}
+            </li>
         {% endif %}
         <!--Other item-->
-        <li class="list-group-item">{{ item.0 }}: {{ item.1 }}</li>
+        <li class="list-group-item">
+            {{ item.0 }}: {{ item.1 }}
+        </li>
         {% endfor %}
     </ul>
     </p>

@@ -25,7 +25,7 @@ from hello.core import views as hello_views
 # from tutorial
 from home import views as home_views
 
-
+# hello/hello/urls.py
 urlpatterns = [
     # added by the github template
     path(route="hello_world/", view=hello_views.index, name="hello_view"),
@@ -33,7 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
     # added by the github template
     path("__reload__/", include("django_browser_reload.urls")),
-    # from tutorial
+    # for home - tutorial
     path(route="", view=home_views.index, name="index"),
     path(route="credits/", view=home_views.credits, name="credits"),
     path(route="about/", view=home_views.about, name="about"),
@@ -42,8 +42,10 @@ urlpatterns = [
     # experiments
     path(route="experiment_escape/", view=home_views.experiment_escape, name="experiment_escape"),
     path(route="starter_bootstrap/", view=home_views.starter_bootstrap, name="starter_bootstrap"),
-    #path(route="base_bootstrap/", view=home_views.base_bootstrap,
-         #name="base_bootstrap"),
+    # for bands
+    # Registering all the URL routes in the bands app
+    path("bands/", include("bands.urls")),
+
 ]
 
 if settings.DEBUG:

@@ -20,7 +20,10 @@ index_data = {
     "homepage": "hello_view",
     "credits": "credits",
     "about": "about",
-    "urls": ["news", "experiment_escape"],
+    "urls": [
+        ("news", "News"), 
+        ("experiment_escape", "Experiment"),
+    ],
 }
 
 
