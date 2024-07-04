@@ -91,13 +91,7 @@ def starter_bootstrap(request):
 
 def index(request):
     """Base html with starter Bootstrap sample"""
-    #global index_data
-    index_data = {
-        "title": "Home",
-        "brand": "RiffMates",
-        "homepage": "hello_view",
-        "credits": "credits",
-        "about": "about",
-        "urls": ["news", "experiment_escape"],
-    }
-    return render(request=request, template_name="base.html", context=index_data)
+    # Use the global index_data. If there is anything that is specific
+    # to the index page, then update the data (local variable) here.
+    data = index_data
+    return render(request=request, template_name="base.html", context=data)

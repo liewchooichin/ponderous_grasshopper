@@ -28,7 +28,7 @@ from home import views as home_views
 # hello/hello/urls.py
 urlpatterns = [
     # added by the github template
-    path(route="hello_world/", view=hello_views.index, name="hello_view"),
+    path(route="hello_world/", view=hello_views.index, name="hello_world"),
     # original admin site
     path('admin/', admin.site.urls, name="admin"),
     # added by the github template
