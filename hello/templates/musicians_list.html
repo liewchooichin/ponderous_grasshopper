@@ -17,5 +17,16 @@
             <li class="list-group-item">No musicians in the database</li>
             {% endfor %}
         </ul>
+
+        <!--Pagination-->
+        {% if page.has_other_pages %}
+            {% if page.has_previous %}
+                <a href="{% url 'musicians_list' %}?page={{page.previous_page_number}}">Prev</a> &nbsp;&nbsp;&nbsp;
+            {% endif %}
+            {% if page.has_next%}
+                <a href="{% url 'musicians_list' %}?page={{page.next_page_number}}">
+                    Next</a>
+            {% endif %}
+        {% endif %}
     </p>
 {% endblock content %}
