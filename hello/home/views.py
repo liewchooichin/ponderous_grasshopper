@@ -6,7 +6,13 @@ from django.http import HttpResponse, JsonResponse
 from django.template import Template, Context, Engine
 from django.utils import safestring, html
 
-# global variable for index page
+from datetime import date, timedelta
+
+# Global variable for index page
+# These are common Home and navigation bar names.
+# I put in in one place so that any changes to the
+# navigation bar do not have to change the key-value
+# data in each view.
 global index_data
 index_data = {
     "title": "Home",
@@ -17,6 +23,8 @@ index_data = {
     "urls": ["news", "experiment_escape"],
 }
 
+
+# Definition of views
 def credits(request):
     """Return the credits message"""
     content = "Credits: Django in Action"
@@ -35,11 +43,19 @@ def version(request):
 
 def news(request):
     """News of the website"""
+    # get the date
+    today = date.today()
+    before1 = today - timedelta(days=1)
+    before2 = today - timedelta(weeks=1)
+    before3 = today - timedelta(weeks=2)
+    # compose the data for context
     data = index_data
     data.update({
         'news': [
-            'RiffMates now has a news page',
-            'RiffMates has its first web page',
+            (today, 'RiffMates now has a base page with Bootstrap.'),
+            (before1, 'RiffMates has its first views and templates.'),
+            (before2, 'RiffMates has just created its first Django app.'),
+            (before3, 'Following a quick run through tutorial of Django in MDN.'),
         ],
         'title': "News",
     })

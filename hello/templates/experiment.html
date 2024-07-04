@@ -30,13 +30,10 @@
         This is also possible&mdash;using <code>safe</code> filter of Django 
         {{ "{%" | safe }} include {{ "%}" | safe }}
     </h2>
-    <p>
-        {# include "news2.html" #}
-    </p>
-
+    
     <h2>Passing tags value with {{ "{%" | safe }} include {{ "%}" | safe }}</h2>
     <p>
-        {% include "experiment2.html" with prev=4 next=6 %}
+        {# include "experiment2.html" with prev=4 next=6 #}
     </p>
 
 </body>

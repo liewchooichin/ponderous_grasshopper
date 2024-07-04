@@ -1,1 +1,9 @@
 /* Stub for the static file */
+
+/* Alternate background color for the table in news */
+.row1 {
+    background-color: white;
+}
+.row2 {
+    background-color: lightgrey;
+}
