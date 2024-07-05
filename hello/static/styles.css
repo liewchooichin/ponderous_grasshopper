@@ -1,4 +1,12 @@
-/* Stub for the static file */
+/*
+ * Custom CSS
+ */
+
+ :root {
+    --bs-body-bg: var(--bs-gray-100);
+  }
+
+
 
 /* Alternate background color for the table in news */
 .row1 {
