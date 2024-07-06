@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 from bands.models import Musician, Venue, Room, BandGroup
-from home import views  
+from home import views, page_util
 # Pagination utilities
 
 # import the global variables on the startup page
@@ -26,19 +26,13 @@ def musician_detail(request, musician_id):
 def musicians_list(request):
     """List of musicians"""
     all_musicians = Musician.objects.all().order_by("first_name")
-    # A page with 2 objects per page 
-    paginator = Paginator(all_musicians, 1)
-
-    # GET the page from query string. 
-    # If the key page does not exists, default to 1.
-    page_num = request.GET.get('page', 1)
-    page_num = int(page_num)
-    # Check the page range
-    if page_num < 1:
-        page_num = 1
-    elif page_num > paginator.num_pages:
-        page_num = paginator.num_pages
-    # Fetch the page object containing the subsets of items
+    # Call the shared page util function to get the
+    # number of items_per_page
+    items_per_page = page_util._get_items_per_page(request)
+    # A page with n objects per page 
+    paginator = Paginator(all_musicians, items_per_page)
+    # Calss the shared function to get the page number
+    page_num = page_util._get_page_num(request, paginator)
     page = paginator.page(page_num)
 
     data.update({
@@ -47,3 +41,67 @@ def musicians_list(request):
         'page': page,
     })
     return render(request=request, template_name="musicians_list.html", context=data)
+
+
+def bandgroup_detail(request, bandgroup_id):
+    """Detail of a particular band group"""
+    bandgroup = get_object_or_404(BandGroup, id=bandgroup_id)
+    data.update({
+        'title': 'Band group detail',
+        'bandgroup': bandgroup,
+    })
+    
+    return render(request=request, 
+                  template_name='bandgroup_detail.html',
+                  context=data)
+
+
+def bandgroups_list(request):
+    """List of all band groups in the site"""
+    all_bandgroups = BandGroup.objects.all().order_by("name")
+    items_per_page = page_util._get_items_per_page(request)
+    paginator = Paginator(all_bandgroups, items_per_page)
+    page_num = page_util._get_page_num(request, paginator)
+    page = paginator.page(page_num)
+
+    data.update({
+        'title': 'Band groups list',
+        'bandgroups': page.object_list,
+        'page': page,
+    })
+
+    return render(request=request, 
+                  template_name="bandgroups_list.html", 
+                  context=data)
+
+
+# Venues and rooms
+def room_detail(request, room_id):
+    """Detail of a room"""
+    room = get_object_or_404(Room, id=room_id)
+    data.update({
+        'title': 'Room details',
+        'room': room,
+    })
+
+    return render(request=request,
+                  template_name="room_detail.html",
+                  context=data)
+
+def venues_list(request):
+    """List of all venues in the site"""
+    all_venues = Venue.objects.all().order_by("name")
+    items_per_page = page_util._get_items_per_page(request)
+    paginator = Paginator(all_venues, items_per_page)
+    page_num = page_util._get_page_num(request, paginator)
+    page = paginator.page(page_num)
+
+    data.update({
+        'title': 'List of venues',
+        'venues': page.object_list,
+        'page': page,
+    })
+
+    return render(request=request,
+                  template_name="venues_list.html",
+                  context=data)

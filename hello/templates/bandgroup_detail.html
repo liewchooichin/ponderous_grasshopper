@@ -1,0 +1,20 @@
+<!--templates/bandgroup_detail.html-->
+{% extends "base.html" %}
+
+<!--Content-->
+{% block content %}
+    <h1>{{ bandgroup.name }}</h1>
+
+    <h2>Band group members</h2>
+    <ul class="list-group">
+        {% for member in bandgroup.members.all %}
+            <li class="list-group-item">
+                <a href={% url 'musician_detail' member.id %}>
+                    {{ member.first_name }} {{ member.last_name }}
+                </a>
+            </li>
+        {% empty %}
+        <li>No members</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

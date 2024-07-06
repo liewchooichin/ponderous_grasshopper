@@ -1,0 +1,42 @@
+<!--templates/venues_list.html-->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>List of venues</h1>
+
+    <ul class="list-group">
+        {% for venue in venues %}
+        <li class="list-group-item">{{ venue.name}}</li>
+        <ul class="list-group">
+            {% for room in venue.room_set.all %}
+                <li class="list-group-item">
+                    <a href={% url 'room_detail' room.id %}>
+                    {{ room.name }}
+                    </a>
+                </li>
+            {% empty %}
+            <li class="list-group-item">No rooms for this venue</li>
+            {% endfor %}
+        </ul>
+        {% empty %}
+        <li>No venues for this site</li>
+        {% endfor %}
+    </ul>
+
+    <!--Pagination-->
+    {% if page.has_other_pages %}
+    <!--Prev-->
+    {% if page.has_previous %}
+        <a href="{% url 'venues_list' %}?page={{page.previous_page_number}}">Prev</a> &nbsp;&nbsp;&nbsp;
+    {% endif %}
+    <!--Show current page-->
+    page {{ page.number }} of {{ page.num_pages }}
+    <!--Next-->
+    {% if page.has_next%}
+        <a href="{% url 'venues_list' %}?page={{page.next_page_number}}">
+            Next</a>
+    {% endif %}
+    {% endif %} 
+    <!--End pagination-->
+
+{% endblock content %}

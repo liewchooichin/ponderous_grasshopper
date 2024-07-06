@@ -24,10 +24,13 @@
             {% if page.has_previous %}
                 <a href="{% url 'musicians_list' %}?page={{page.previous_page_number}}">Prev</a> &nbsp;&nbsp;&nbsp;
             {% endif %}
+            <!--Show current page-->
+            page {{ page.number }} of {{ page.num_pages }}
             {% if page.has_next%}
                 <a href="{% url 'musicians_list' %}?page={{page.next_page_number}}">
                     Next</a>
             {% endif %}
-        {% endif %}
+        {% endif %} 
+        <!--End pagination-->
     </p>
 {% endblock content %}

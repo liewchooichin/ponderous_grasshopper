@@ -1,0 +1,36 @@
+<!--templates/bandgroups_list.html-->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Band groups list</h1>
+
+    <ul class="list-group">
+        {% for group in bandgroups %}
+            <li class="list-group-items">
+                <a href={% url 'bandgroup_detail' {{ group.id }} %}>
+                    {{ group.name }}
+                </a>
+            </li>
+        {% empty %}
+        <li>No band groups in the site</li>
+        {% endfor %}
+    </ul>
+
+    <!--Pagination-->
+    {% if page.has_other_pages %}
+    <!--Prev-->
+    {% if page.has_previous %}
+        <a href="{% url 'bandgroups_list' %}?page={{page.previous_page_number}}">Prev</a> &nbsp;&nbsp;&nbsp;
+    {% endif %}
+    <!--Show current page-->
+    page {{ page.number }} of {{ page.num_pages }}
+    &nbsp;&nbsp;&nbsp;
+    <!--Next-->
+    {% if page.has_next%}
+        <a href="{% url 'bandgroups_list' %}?page={{page.next_page_number}}">
+            Next</a>
+    {% endif %}
+    {% endif %} 
+    <!--End pagination-->
+
+{% endblock content %}
