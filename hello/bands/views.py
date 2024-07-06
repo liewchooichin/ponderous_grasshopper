@@ -4,11 +4,14 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
-from bands.models import Musician
+from bands.models import Musician, Venue, Room, BandGroup
 from home import views  
+# Pagination utilities
 
 # import the global variables on the startup page
 data = views.index_data
+
+
 
 # Views of bands
 def musician_detail(request, musician_id):

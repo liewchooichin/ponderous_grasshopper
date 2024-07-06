@@ -25,3 +25,8 @@
 -- GO
 
 
+SELECT name, database_id, create_date,  
+    is_auto_close_on, state_desc,
+    is_cleanly_shutdown
+FROM sys.databases;  
+GO
