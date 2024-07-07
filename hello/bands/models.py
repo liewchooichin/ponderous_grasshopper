@@ -45,6 +45,14 @@ class Room(models.Model):
     name = models.CharField(max_length=20)
     venue = models.ForeignKey("Venue", on_delete=models.CASCADE)
 
+    # properties 
+    SIZE = {
+        'L': "Large--Up to 200 people",
+        'M': "Medium--Up to 100 people",
+        'S': "Small--Up to 50 people",
+    }
+    size = models.CharField(verbose_name="Capacity of room", choices=SIZE, max_length=1, default="S")
+
     def __str__(self):
         return f"Room(id={self.id}, name={self.name})"
 
