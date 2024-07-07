@@ -17,7 +17,7 @@
     <p>
         In band groups: 
         <ul class="list-group">
-            {% for group in bandgroupsmembers_set.all %}
+            {% for group in musician.bandgroupsmembers_set.all %}
             <li class="list-group-item">
                 {{ group.name }}
             </li>
