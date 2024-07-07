@@ -20,6 +20,18 @@ class Musician(models.Model):
     birth = models.DateField(
         verbose_name = "Date of birth",
     )
+    # choices of music
+    STYLE_MUSIC = {
+        "ROCK": "Rock and roll",
+        "RELA": "Relaxing",
+        "LIVE": "Lively",
+    }
+    style = models.CharField(
+        verbose_name="Style of music",
+        max_length=4,
+        default="RELA", 
+        help_text="Main style of music",
+    )
     def __str__(self):
         return f"Musician(id={self.id}, {self.first_name} {self.last_name})"
 
