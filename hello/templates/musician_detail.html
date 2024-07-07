@@ -9,4 +9,21 @@
         {{ musician.first_name}} {{ musician.last_name}}
         was born on {{ musician.birth}}.
     </p>
+    
+    <h2>Work in progress</h2> 
+    <p>How to find out how to link
+        a musician to the band groups he/she belongs to.
+    </p>
+    <p>
+        In band groups: 
+        <ul class="list-group">
+            {% for group in bandgroupsmembers_set.all %}
+            <li class="list-group-item">
+                {{ group.name }}
+            </li>
+            {% empty %}
+            <li>Not in any band groups</li>
+            {% endfor %}
+        </ul>
+    </p>
 {% endblock content %}

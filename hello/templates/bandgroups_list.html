@@ -6,8 +6,8 @@
 
     <ul class="list-group">
         {% for group in bandgroups %}
-            <li class="list-group-items">
-                <a href={% url 'bandgroup_detail' {{ group.id }} %}>
+            <li class="list-group-item">
+                <a href={% url 'bandgroup_detail' group.id %}>
                     {{ group.name }}
                 </a>
             </li>
