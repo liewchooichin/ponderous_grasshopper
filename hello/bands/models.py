@@ -29,6 +29,7 @@ class Musician(models.Model):
     style = models.CharField(
         verbose_name="Style of music",
         max_length=4,
+        choices=STYLE_MUSIC,
         default="RELA", 
         help_text="Main style of music",
     )
@@ -47,14 +48,14 @@ class Venue(models.Model):
     """make sense to keep the associated rooms, so the on_delete value for""" 
     """the Room is CASCADE."""
     id = models.SmallAutoField(primary_key=True)
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, verbose_name="Venue")
 
     def __str__(self):
         return f"Venue (id={self.id}, name={self.name})"
     
 class Room(models.Model):
     id = models.SmallAutoField(primary_key=True)
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, verbose_name="Room")
     venue = models.ForeignKey("Venue", on_delete=models.CASCADE)
 
     # properties 
@@ -63,7 +64,11 @@ class Room(models.Model):
         'M': "Medium--Up to 100 people",
         'S': "Small--Up to 50 people",
     }
-    size = models.CharField(verbose_name="Capacity of room", choices=SIZE, max_length=1, default="S")
+    size = models.CharField(
+        verbose_name="Capacity of room", 
+        choices=SIZE, 
+        max_length=1, 
+        default="S")
 
     def __str__(self):
         return f"Room(id={self.id}, name={self.name})"
@@ -76,7 +81,7 @@ class Room(models.Model):
 class BandGroup(models.Model):
     """A group can have many musicians. Many-to-many relationship."""
     id = models.SmallAutoField(primary_key=True)
-    name = models.CharField(max_length=20, default="Band Group")
+    name = models.CharField(max_length=20, default="Band Group", verbose_name="Band group")
     members = models.ManyToManyField(to="bands.Musician", verbose_name="Members")
     
     def __str__(self):

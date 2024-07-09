@@ -10,14 +10,14 @@
         was born on {{ musician.birth}}.
     </p>
     
-    <h2>Work in progress</h2> 
-    <p>How to find out how to link
-        a musician to the band groups he/she belongs to.
+    <p>
+        Style of music: {{ style }}
     </p>
+
     <p>
         In band groups: 
         <ul class="list-group">
-            {% for group in musician.bandgroupsmembers_set.all %}
+            {% for group in bandgroup %}
             <li class="list-group-item">
                 {{ group.name }}
             </li>

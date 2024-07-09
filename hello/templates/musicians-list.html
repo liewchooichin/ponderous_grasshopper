@@ -11,7 +11,7 @@
             {% for m in musicians %}
             <li class="list-group-item">
                 <a href="{% url "musician_detail" m.id %}">
-                    {{ m.first_name }} {{ m.last_name }}
+                    {{ m.first_name }} {{ m.last_name }} {{ bandgroup }}
                 </a>
             </li>
             {% empty %}
@@ -22,12 +22,12 @@
         <!--Pagination-->
         {% if page.has_other_pages %}
             {% if page.has_previous %}
-                <a href="{% url 'musicians_list' %}?page={{page.previous_page_number}}">Prev</a> &nbsp;&nbsp;&nbsp;
+                <a href="{% url 'musicians-list' %}?page={{page.previous_page_number}}">Prev</a> &nbsp;&nbsp;&nbsp;
             {% endif %}
             <!--Show current page-->
             page {{ page.number }} of {{ page.num_pages }}
             {% if page.has_next%}
-                <a href="{% url 'musicians_list' %}?page={{page.next_page_number}}">
+                <a href="{% url 'musicians-list' %}?page={{page.next_page_number}}">
                     Next</a>
             {% endif %}
         {% endif %} 
