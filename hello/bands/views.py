@@ -47,15 +47,19 @@ def musicians_list(request):
     # show bandgroup
     def show_bandgroup(obj):
         bandgroup = obj.bandgroup_set.all()
+
         if len(bandgroup) == 0:
             return format_html("<i>None</i>")
         
-        bandgroup_list = list()
+        # create a html band_name_list
+        band_name_list = format_html("")
         for b in bandgroup:
-            #url = f"bandgroup_detail/{b.id}"
-            #bandgroup_list.append(format_html("<a href='{}'>Band: {}</a>", url, b.name))
-            bandgroup_list.append(b.name)
-        return bandgroup_list
+            url = reverse("bandgroup_detail", kwargs={"bandgroup_id": b.id})
+            band_name = format_html(
+                "<li class='list-group-item'><a href='{}'>Band: {}</a></li>", url, b.name)
+            band_name_list += band_name
+
+        return band_name_list
     show_bandgroup.short_description = "Band groups"
 
     # Call the shared page util function to get the
@@ -68,15 +72,25 @@ def musicians_list(request):
     page = paginator.page(page_num)
 
     # for each object in the page, show the bandgroup
-    for obj in page.object_list:
-        #result = list()
-        #result.append(show_bandgroup(obj))
-        bandgroups_list = show_bandgroup(obj)
+    def get_bandgroup_for_each_musician():
+        page_bandgroup_list = []
+        for i in range(items_per_page):
+            bandgroup_list = format_html("<ul class='list-group'>")
+            for obj in page.object_list:
+                # format the names in ul
+                bandgroup_list = show_bandgroup(obj)
+            bandgroup_list += format_html("</ul>")
+        page_bandgroup_list.append(bandgroup_list)
+        return page_bandgroup_list
+
+    # put the musician and her bandgroup in ul
+    #def format_bandgroup_list():
+        #bandgroup_list = format_html("<ul class='list-group'>")
 
     data.update({
         'title': 'Musicians list',
         'musicians': page.object_list,
-        'bandgroup': bandgroups_list,
+        'bandgroup': get_bandgroup_for_each_musician(),
         'page': page,
     })
     return render(request=request, template_name="musicians-list.html", context=data)

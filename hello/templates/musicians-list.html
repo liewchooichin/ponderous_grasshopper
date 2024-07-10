@@ -16,7 +16,10 @@
             {% for m in musicians %}
             <li class="list-group-item">
                 <a href="{% url "musician_detail" m.id %}">
-                    {{ m.first_name }} {{ m.last_name }} {{ bandgroup }}
+                    {{ m.first_name }} {{ m.last_name }} 
+                    {% for b in bandgroup %}
+                        {{ b }}
+                    {% endfor %}
                 </a>
             </li>
             {% empty %}
@@ -30,7 +33,7 @@
                 <a href="{% url 'musicians-list' %}?page={{page.previous_page_number}}">Prev</a> &nbsp;&nbsp;&nbsp;
             {% endif %}
             <!--Show current page-->
-            page {{ page.number }} of {{ page.num_pages }}
+            page {{ page.number }} of {{ page.count }}
             {% if page.has_next%}
                 <a href="{% url 'musicians-list' %}?page={{page.next_page_number}}">
                     Next</a>

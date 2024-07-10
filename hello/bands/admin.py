@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Import utility classes
 from datetime import datetime, date
-from django.utils.html import format_html, mark_safe
+from django.utils.html import format_html, mark_safe, format_html_join
 from django.urls import reverse
 from django.db.models.query import QuerySet
 
@@ -170,12 +170,11 @@ class BandGroupAdmin(admin.ModelAdmin):
     # Another way to show_members_2
     def show_members_2(self, obj):
         members = obj.members.all()
-        links = list()
-
+        
         url = reverse("admin:bands_musician_changelist")
 
         # format the link in a list
-        link = format_html("<ul class='list-group'")
+        musician_link = format_html("<ul class='list-group'>")
         for m in members:
             query_param = f"?id={m.id}"
             musician_name = f"{m.first_name} {m.last_name}"
@@ -184,11 +183,13 @@ class BandGroupAdmin(admin.ModelAdmin):
                 + f"<a href='{url}{query_param}'>{musician_name}</a>"
                 + "</li>"
             )
-            links.append(member_list)
+            musician_link += member_list
         # append the closing </ul>
-        link += format_html("</ul>")
-        return mark_safe("".join(links))
-        show_members_2.short_description = "Members"
+        musician_link += format_html("</ul>")
+        return musician_link
+    
+    # Give the column a name
+    show_members_2.short_description = "Members"
     
 
 @admin.register(Venue)
