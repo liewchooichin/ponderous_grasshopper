@@ -1,0 +1,19 @@
+<!--templates/registration/login.html-->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Login</h1>
+
+<form method="POST">
+    <!--The object called form has a method called .as_p() 
+    that renders the <input> tags of the login url_page.
+    The csrf_token is used for security.
+    -->
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-dark" type="submit">
+        Login</button>
+    </form>
+
+{% endblock content %}

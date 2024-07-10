@@ -19,5 +19,7 @@ urlpatterns = [
          view=band_views.venues_list, name="venues_list"),
      path(route="restricted_page/", 
           view=band_views.restricted_page, name="restricted_page"),
+     path(route="musician_restricted/<int:musician_id>/", 
+          view=band_views.musician_restricted, name="musician_restricted"),
 ]
 

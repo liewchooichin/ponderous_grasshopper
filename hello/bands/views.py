@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.utils.html import format_html
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 from bands.models import Musician, Venue, Room, BandGroup
 from home import views, page_util
@@ -181,12 +182,56 @@ def venues_list(request):
 
 
 # Restricted page that users require login
-#@login_required
+@login_required
 def restricted_page(request):
     data = {
         'title': 'Restriced page',
-        'content': '<h1>For registered users only</h1>',
+        'content': '<h1>Members only</h1>',
     }
     return render(request=request, 
                   template_name="restricted_page.html",
                   context=data)
+
+# Login and authorization is for Musician only
+# Raise django.http.Http404 exception for not allowed access
+@login_required
+def musician_restricted(request, musician_id):
+    musician = get_object_or_404(Musician, id=musician_id)
+    # request.user is the authenticated user, and userprofile
+    # is the reverse relationship to the UserProfile ORM model.
+    profile = request.user.userprofile
+    # set to True if authorization succeeds.
+    allowed = False
+
+    # musician_profile is defined in the models.UserProfile
+    if profile.musician_profiles.filter(
+        id=musician_id).exists():
+        allowed = True
+    else:
+        # User is not this musician, check if they are a band mate
+        # Store all the user's associated Musician objects as a set.
+        musician_profiles = set(
+            profile.musician_profiles.all()
+        )
+        for b in musician.bandgroup_set.all():
+            band_musicians = set(b.musicians.all())
+            # intersection() is a method of set
+            if musician_profiles.intersection(band_musicians):
+                allowed = True
+                break
+        
+    # if not allowed, raise an error
+    if not allowed:
+        raise Http404("Permission denied")
+
+    # fill in the return context
+    content = f"""
+        <h1>Musician page: {musician.first_name} 
+            {musician.last_name}</h1>
+        <p>Musician's top budget practicing venues for rental.</p>
+    """
+    data = {
+        'title': 'Musician restricted',
+        'content': content,
+    }
+    return render(request, "restricted_page.html", data)
