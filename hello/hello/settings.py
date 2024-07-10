@@ -186,3 +186,12 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+# Setting where to redirect users to if there is no next
+# argument provided to the login page.
+# Where to redirect to when the user logs out.
+# Account management
+LOGIN_REDIRECT_URL = '/bands/bands/'
+LOGOUT_REDIRECT_URL = '/bands/bands/'
+# For resetting password
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

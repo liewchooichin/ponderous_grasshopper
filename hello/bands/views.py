@@ -16,9 +16,15 @@ from home import views, page_util
 # import the global variables on the startup page
 data = views.index_data
 
-
-
 # Views of bands
+def band_index(request):
+    data.update({
+        'title': 'Home',
+    })
+    return render(request=request, 
+                  template_name="band_index.html", context=data)
+
+
 def musician_detail(request, musician_id):
     """Individual musician data"""
     musician = get_object_or_404(Musician, id=musician_id)

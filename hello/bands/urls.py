@@ -5,8 +5,10 @@ from django.urls import path
 from bands import views as band_views
 
 urlpatterns = [
+    path(route="bands/",
+         view=band_views.band_index, name="band_index"),
     path(route="musician_detail/<int:musician_id>/", 
-         view=band_views.  musician_detail, name="musician_detail"),
+         view=band_views.musician_detail, name="musician_detail"),
     path(route="musicians-list/", 
          view=band_views.musicians_list, name="musicians-list"),
     path(route="bandgroup_detail/<int:bandgroup_id>/", 

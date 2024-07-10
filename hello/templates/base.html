@@ -21,7 +21,29 @@
     <!--Navigation bar from the sample-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href={% url "index" %}>{{ brand }}</a>
+        <a class="navbar-brand" href={% url "index" %}>RiffMates</a>
+            <!--login logout button-->
+            <div>
+              {% if user.is_authenticated %}
+                <p class="text-white bg-dark">{{ user.username }}</p>
+
+              <form id="logout-form" method="post" 
+                action={% url 'logout' %} >
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+              </form>
+              {% else %}
+                <form id="login-form" method="post"
+                action={% url 'login' %}>
+                {% csrf_token %}
+                <button type="submit">Login</button>
+                <p>
+                  <a href={% url "login" %}>Login</a>
+                  <a href={% url "password_reset" %}>Forget password</a>
+                </p>
+              {% endif %}
+            </div>
+            <!--end login logout-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,6 +78,18 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href={% url 'about' %}>About</a></li>
                 <li><a class="dropdown-item" href={% url 'credits' %}>Credits</a></li>
+                <!--login and logout-->
+                <li>
+                  {% if user.is_authenticated %}
+                  <form id="logout-form" method="post"
+                    action={% url "logout" %}>
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                  </form>
+                  {% else %}
+                    <a href={% url "login" %}>Login</a>
+                  {% endif %}
+                </li>
               </ul>
             </li>
             <li class="nav-item">
