@@ -47,29 +47,36 @@ def musicians_list(request):
     # show bandgroup
     def show_bandgroup(obj):
         bandgroup = obj.bandgroup_set.all()
-
+        print("current obj id", obj.id)
+        print("Bandgroup", bandgroup)
+        # there is no bandgroup for this obj
         if len(bandgroup) == 0:
             return format_html("<i>None</i>")
         
         # create a html band_name_list
         band_name_list = format_html("")
+            
+        member_list = []
+        member_id = []
         for b in bandgroup:
-            url = reverse("bandgroup_detail", kwargs={"bandgroup_id": b.id})
-            band_name = format_html(
-                "<li class='list-group-item'><a href='{}'>Band: {}</a></li>", url, b.name)
-            band_name_list += band_name
+            member_list = b.members.all()
+            
+            for m in member_list:
+                member_id.append(m.id)
+            print(member_list)
+            print(member_id)
 
+            if obj.id in member_id:
+                #for b in bandgroup:
+                url = reverse("bandgroup_detail", kwargs={"bandgroup_id": b.id})
+                band_name = format_html(
+                    "<li class='list-group-item'><a href='{}'>Band: {}</a></li>", url, b.name)
+                band_name_list += band_name
+                # clear the list
+                member_list = []
+                member_id = []
         return band_name_list
     show_bandgroup.short_description = "Band groups"
-
-    # Call the shared page util function to get the
-    # number of items_per_page
-    items_per_page = page_util._get_items_per_page(request)
-    # A page with n objects per page 
-    paginator = Paginator(all_musicians, items_per_page)
-    # Calss the shared function to get the page number
-    page_num = page_util._get_page_num(request, paginator)
-    page = paginator.page(page_num)
 
     # for each object in the page, show the bandgroup
     def get_bandgroup_for_each_musician():
@@ -83,12 +90,24 @@ def musicians_list(request):
         page_bandgroup_list.append(bandgroup_list)
         return page_bandgroup_list
 
+    # Call the shared page util function to get the
+    # number of items_per_page
+    #items_per_page = page_util._get_items_per_page(request)
+    # manually set the items per page
+    items_per_page = 3
+    # A page with n objects per page 
+    paginator = Paginator(all_musicians, items_per_page)
+    # Calss the shared function to get the page number
+    page_num = page_util._get_page_num(request, paginator)
+    page = paginator.page(page_num)
+
     # put the musician and her bandgroup in ul
     #def format_bandgroup_list():
         #bandgroup_list = format_html("<ul class='list-group'>")
 
     data.update({
         'title': 'Musicians list',
+        'total_pages': paginator.num_pages,
         'musicians': page.object_list,
         'bandgroup': get_bandgroup_for_each_musician(),
         'page': page,

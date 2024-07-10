@@ -33,7 +33,7 @@
                 <a href="{% url 'musicians-list' %}?page={{page.previous_page_number}}">Prev</a> &nbsp;&nbsp;&nbsp;
             {% endif %}
             <!--Show current page-->
-            page {{ page.number }} of {{ page.count }}
+            page {{ page.number }} of {{ total_pages }} &nbsp;&nbsp;&nbsp;
             {% if page.has_next%}
                 <a href="{% url 'musicians-list' %}?page={{page.next_page_number}}">
                     Next</a>
