@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Import utility classes
 from datetime import datetime, date
-from django.utils.html import format_html
+from django.utils.html import format_html, mark_safe
 from django.urls import reverse
 from django.db.models.query import QuerySet
 
@@ -133,13 +133,88 @@ class MusicianAdmin(admin.ModelAdmin):
 @admin.register(BandGroup)
 class BandGroupAdmin(admin.ModelAdmin):
     """Admin page for BandGroup"""
-    list_display = ["name"]
+    list_display = ["name", "show_members_2"]
+    #list_display = ["name"]
+    search_fields = ["name__startswith"]
+        # Query all bands associated with this musician
+    
+    # First method to show_members. This is the same as
+    # the other show_xxx in the admin.py.
+    # The second method is shown below.
+    def show_members(self, obj):
+        members = obj.members.all()
+        if len(members) == 0:
+            # This return can be formatted in html
+            return format_html("<i>None</i>")
+        
+        # if there is more than one band
+        plural = ""
+        if len(members) == 1:
+            plural = f" ({len(members)})"
+        elif len(members) > 1:
+            plural = "s" + f" ({len(members)})"
+        
+        # Query parameter using the __in suffix and a comma
+        # separated list of Bandgroup id.
+        # Look up the Bandgroup listing page, and then add
+        # the query parameter to the end.
+        query_param = "?id__in=" + ",".join([str(m.id) for m in members])
+        # IMPORTANT: The reverse must take the model class name, for
+        # example bands_musician, NOT bands_members.
+        url = reverse("admin:bands_musician_changelist") + query_param
+        # Create a safe <a> tag using the URL and the pluralization of Bandgroup
+        result = format_html("<a href='{}'>Member{}</a>", url, plural)
+        return result
+    show_members.short_description = "Members"
+
+    # Another way to show_members_2
+    def show_members_2(self, obj):
+        members = obj.members.all()
+        links = list()
+
+        url = reverse("admin:bands_musician_changelist")
+
+        # format the link in a list
+        link = format_html("<ul class='list-group'")
+        for m in members:
+            query_param = f"?id={m.id}"
+            musician_name = f"{m.first_name} {m.last_name}"
+            member_list = format_html(
+                "<li class='list-group-item'>"
+                + f"<a href='{url}{query_param}'>{musician_name}</a>"
+                + "</li>"
+            )
+            links.append(member_list)
+        # append the closing </ul>
+        link += format_html("</ul>")
+        return mark_safe("".join(links))
+        show_members_2.short_description = "Members"
     
 
 @admin.register(Venue)
 class VenueAdmin(admin.ModelAdmin):
     """Admin page for Venue"""
-    list_display = ["name"]
+    list_display = ["name", "show_rooms"]
+    search_fields = ["name"]
+
+    def show_rooms(self, obj):
+        rooms = obj.room_set.all()
+        if len(rooms) == 0:
+            return format_html("<i>None</i>")
+        
+        # format the rooms string
+        plural = ""
+        if len(rooms) == 1:
+            plural = f" ({len(rooms)})"
+        elif len(rooms) > 1:
+            plural = "s" + f" ({len(rooms)})"
+
+        # Get the query parameters
+        query_param = "?id__in=" + ",".join([str(r.id) for r in rooms])
+        url = reverse("admin:bands_room_changelist") + query_param
+        result = format_html("<a href='{}'>Room{}</a>", url, plural)
+        return result
+    show_rooms.short_description = "Rooms"
     
 
 @admin.register(Room)
@@ -161,4 +236,4 @@ class RoomAdmin(admin.ModelAdmin):
     # This query is sent in Request when clicking on "Show counts"
     show_facets = admin.ShowFacets.ALLOW
     list_filter = ["size"]
-    search_fields = ["name"]
+    search_fields = ["name__startswith"]

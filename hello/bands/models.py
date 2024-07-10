@@ -33,6 +33,11 @@ class Musician(models.Model):
         default="RELA", 
         help_text="Main style of music",
     )
+
+    # Meta
+    class Meta:
+        ordering = ["first_name"]
+
     def __str__(self):
         return f"Musician(id={self.id}, {self.first_name} {self.last_name})"
 
@@ -49,6 +54,11 @@ class Venue(models.Model):
     """the Room is CASCADE."""
     id = models.SmallAutoField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name="Venue")
+
+    # Meta
+    class Meta:
+        ordering =["name"]
+        indexes = [models.Index(fields=["name"])]
 
     def __str__(self):
         return f"Venue (id={self.id}, name={self.name})"
@@ -70,6 +80,16 @@ class Room(models.Model):
         max_length=1, 
         default="S")
 
+    # Meta
+    class Meta:
+        ordering = ["name"]
+        # can add indexes
+        # unique_together
+        # Notice that unique_together is [[]] list of list.
+        # If there are more attributes, than the list of list can
+        # be used to specify many different set of uniqueness.
+        unique_together = [["name", "venue"]]
+
     def __str__(self):
         return f"Room(id={self.id}, name={self.name})"
 
@@ -84,5 +104,9 @@ class BandGroup(models.Model):
     name = models.CharField(max_length=20, default="Band Group", verbose_name="Band group")
     members = models.ManyToManyField(to="bands.Musician", verbose_name="Members")
     
+    # Meta
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self):
         return f"BandGroup(id={self.id}, name={self.name})"
