@@ -1,5 +1,9 @@
 from django.db import models
 
+# for user profile class
+from django.contrib.auth.models import User
+
+
 # Create your models here.
 
 class Musician(models.Model):
@@ -110,3 +114,19 @@ class BandGroup(models.Model):
 
     def __str__(self):
         return f"BandGroup(id={self.id}, name={self.name})"
+    
+# UserProfile
+class UserProfile(models.Model):
+    """
+    Create a one-to-one relationship between UserProfile and User.
+    A user can be both a musician and a venue operator. 
+    Create many-to-many relationships with Musician and Venue objects.
+    Store relationships between this user account and any Musician or
+    Venue objects.
+    Set blank=True so these can be empty fields in the DjangoAdmin
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    musician_profiles = models.ManyToManyField(Musician, blank=True)
+    venues_operated = models.ManyToManyField(Venue, blank=True)
+
+    

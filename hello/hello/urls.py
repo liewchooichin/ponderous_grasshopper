@@ -45,7 +45,8 @@ urlpatterns = [
     # for bands
     # Registering all the URL routes in the bands app
     path("bands/", include("bands.urls")),
-
+    # for authentication
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,17 @@
+<!--general.html-->
+<!--Need login to view this general page-->
+
+{% extends "base.html" %}
+
+<!--title in the head-->
+{% block title %}
+    {{ block.super }} {{ title }}
+{% endblock %}
+
+<!--content-->
+<!--Use the safe filter to prevent HTML -->
+<!--content being escaped by Django.-->
+{% block content %}
+    {{ content|safe }}
+{% endblock content %}
+

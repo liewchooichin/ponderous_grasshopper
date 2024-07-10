@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 from django.utils.html import format_html
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from bands.models import Musician, Venue, Room, BandGroup
 from home import views, page_util
@@ -176,4 +177,16 @@ def venues_list(request):
 
     return render(request=request,
                   template_name="venues_list.html",
+                  context=data)
+
+
+# Restricted page that users require login
+#@login_required
+def restricted_page(request):
+    data = {
+        'title': 'Restriced page',
+        'content': '<h1>For registered users only</h1>',
+    }
+    return render(request=request, 
+                  template_name="restricted_page.html",
                   context=data)

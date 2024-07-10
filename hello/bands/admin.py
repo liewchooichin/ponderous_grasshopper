@@ -1,6 +1,9 @@
 from typing import Any
 from django.contrib import admin
 
+# For UserProfile through the DjangoAdmin
+from django.contrib import auth
+
 # Register your models here.
 
 # Import utility classes
@@ -11,6 +14,8 @@ from django.db.models.query import QuerySet
 
 # Import my models
 from bands.models import Musician, BandGroup, Venue, Room
+# UserProfile
+from bands.models import UserProfile
 
 # Make a custom list filter based on decades
 class DecadeListFilter(admin.SimpleListFilter):
@@ -238,3 +243,24 @@ class RoomAdmin(admin.ModelAdmin):
     show_facets = admin.ShowFacets.ALLOW
     list_filter = ["size"]
     search_fields = ["name__startswith"]
+
+
+# UserProfile
+class UserProfileInline(admin.StackedInline):
+    """
+    Create a form by inheriting from admin.StackedInline
+    Associate the stacked inline form with the UserProfile 
+    object.
+    """
+    model = UserProfile
+    can_delete = False
+
+class UserAdmin(auth.admin.UserAdmin):
+    """Use the new UserProfileInline class as a stacked form."""
+    inlines = [UserProfileInline]
+
+# Remove the old admin object for the User, and add the UserAdmin
+# as its replacement.
+admin.site.unregister(auth.models.User)
+admin.site.register(auth.models.User, UserAdmin)
+

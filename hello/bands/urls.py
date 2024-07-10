@@ -17,6 +17,7 @@ urlpatterns = [
          view=band_views.room_detail, name="room_detail"),
     path(route="venues_list/",
          view=band_views.venues_list, name="venues_list"),
-
+     path(route="restricted_page/", 
+          view=band_views.restricted_page, name="restricted_page"),
 ]
 
