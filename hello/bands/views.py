@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 from django.utils.html import format_html
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import Http404
 
 from bands.models import Musician, Venue, Room, BandGroup
@@ -168,6 +168,27 @@ def room_detail(request, room_id):
                   template_name="room_detail.html",
                   context=data)
 
+
+# Require login to view venues
+# This is using user_passes_test function.
+def has_venue(user):
+    """
+    Anonymous users have no profile, which triggers an AttributeError.
+    Check how many venues the user controls. If it is one or more, 
+    allow them in.
+    """
+    try:
+        venue_count = user.userprofile.venues_operated.count()
+        if venue_count > 1:
+            return True
+        else:
+            return False
+    except AttributeError as err:
+        print(f"AttributeError: {err}")
+        return False
+
+#@user_passes_test(has_venue)
+@login_required
 def venues_list(request):
     """List of all venues in the site"""
     all_venues = Venue.objects.all().order_by("name")

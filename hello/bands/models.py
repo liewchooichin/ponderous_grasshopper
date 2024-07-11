@@ -2,6 +2,9 @@ from django.db import models
 
 # for user profile class
 from django.contrib.auth.models import User
+# Signal to handle when there is a login failure
+from django.contrib.auth.signals import user_login_failed, user_logged_in, user_logged_out
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -129,4 +132,51 @@ class UserProfile(models.Model):
     musician_profiles = models.ManyToManyField(Musician, blank=True)
     venues_operated = models.ManyToManyField(Venue, blank=True)
 
+    def __str__(self):
+        return (f"UserProfile: {self.user}")
+
+
+# Track user login using signals
+@receiver(user_login_failed)
+def track_login_failure(sender, **kwargs):
+    """
+    The user_login_failed signal includes credential
+    information and the request object in its keyword
+    argument dictionary.
+    """
+    for k, v in kwargs.items():
+        print(k, v)
+    username = kwargs["credentials"]["username"]
+    url = kwargs["request"].path
+    print(f"Login failure: \n\tUser: {username} \n\tPath: {url}")
+
+# Logout info
+
+# Track user login using signals
+@receiver(user_logged_out)
+def track_logged_out(sender, **kwargs):
+    """
+    The user_login_failed signal includes credential
+    information and the request object in its keyword
+    argument dictionary.
+    """
+    for k, v in kwargs.items():
+        print(k, v)
+    username = kwargs["user"]
+    url = kwargs["request"].path
+    print(f"Logout: \n\tUser: {username} \n\tPath: {url}")
+
+# Track user login using signals
+@receiver(user_logged_in)
+def track_logged_in(sender, **kwargs):
+    """
+    The user_login_failed signal includes credential
+    information and the request object in its keyword
+    argument dictionary.
+    """
     
+    for k, v in kwargs.items():
+        print(k, v)
+    username = kwargs["user"]
+    url = kwargs["request"].path
+    print(f"Logout: \n\tUser: {username} \n\tPath: {url}")
