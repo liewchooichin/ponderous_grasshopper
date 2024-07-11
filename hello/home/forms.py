@@ -10,6 +10,7 @@ class MyPasswordResetForm(PasswordResetForm):
     """Custom password reset form to be used with custom
         email backend.
     """
+    pass
     #user_email = forms.EmailField(label="Email", max_length=100)
     
     # context – context passed to the subject_template, 
@@ -20,7 +21,7 @@ class MyPasswordResetForm(PasswordResetForm):
     # html_email_template_name: Default to None
 
     # My variables for use with custom email backend
-    from_email = "<DoNotReply@f0cf672a-d027-4901-bfea-018e517e7e1c.azurecomm.net>"
+    #from_email = "<DoNotReply@f0cf672a-d027-4901-bfea-018e517e7e1c.azurecomm.net>"
     
     #send_with_azure_email(from_email=from_email)
     #send_mail(subject="Difficult subject",

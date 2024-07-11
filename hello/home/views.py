@@ -51,7 +51,7 @@ def my_password_reset_view(request):
     # if this is a POST request we need to process the form data
     if request.method == "POST":
         # create a form instance and populate it with data from the request:
-        form = MyPasswordResetForm(request.POST) #MyPasswordResetForm(request.POST)
+        form = PasswordResetForm(request.POST) 
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
@@ -70,23 +70,24 @@ def my_password_reset_view(request):
             for k, v in request.POST.items():
                 print(k, v)
             current_user = User.objects.filter(email=user_email)
+            # for info
             email_view = PasswordResetView()
             print(email_view.get_template_names())
+
+            # No idea how to get the uid and token
             uidb64 = "uidb64"
             token = "token"
-            #password_reset_confirm = reverse('')
             reset_link = (f"{protocol}://{domain}/accounts/reset/{uidb64}/{token}/")
             print(reset_link)
             password_reset_email = format_html(
             "<html>Please go to the following page and choose a new password: <a href='{}'>Reset password page</a></html>", reset_link
             )
             password_reset_subject = "Password reset request"
-            #with open("./templates/registration/password_reset_email.html", "r") as f:
-            #    password_reset_email = format_html(f.read())
+            from_email = "<DoNotReply@f0cf672a-d027-4901-bfea-018e517e7e1c.azurecomm.net>"
             print(password_reset_email)
             send_mail(subject=password_reset_subject,
               message=password_reset_email,
-              from_email=form.from_email,
+              from_email=from_email,
               recipient_list=[user_email],
               html_message=password_reset_email,
              )
@@ -94,7 +95,7 @@ def my_password_reset_view(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = MyPasswordResetForm()
+        form = PasswordResetForm()
 
     # password_reset_form: registration/password_reset_form.html
     return render(
