@@ -1,5 +1,9 @@
 # README
 
+## To use Azure Email Backend
+
+This is
+
 ## To create new app in this repo
 
 Go to the outer **hello** directory, where the **manage.py** is located. Start a new app in this directory. The outer **hello** is the **project directory**.

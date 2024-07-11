@@ -29,6 +29,81 @@ index_data = {
 }
 
 
+# Password reset
+from django.http import HttpResponseRedirect
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.views import PasswordResetView
+from django.core.mail import send_mail
+from django.urls import reverse
+from django.core.mail import send_mail
+from django.utils.html import format_html
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.views import PasswordResetView
+from django.utils.http import urlsafe_base64_encode
+
+from .forms import MyPasswordResetForm
+from bands.models import User
+
+# My own custome password reset handling view
+# URL patterns for accounts: 
+# https://docs.djangoproject.com/en/5.0/topics/auth/default/#using-the-views
+def my_password_reset_view(request):
+    # if this is a POST request we need to process the form data
+    if request.method == "POST":
+        # create a form instance and populate it with data from the request:
+        form = MyPasswordResetForm(request.POST) #MyPasswordResetForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            # accounts/password_reset/done/ 
+            # [name='password_reset_done']
+            user_email = form.cleaned_data["email"]
+            print("User email", user_email)
+            # send email through Azure email client
+            # reset link:
+            # accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
+            protocol = "http"
+            domain =  request.get_host()
+            print("POST data")
+            for k, v in request.POST.items():
+                print(k, v)
+            current_user = User.objects.filter(email=user_email)
+            email_view = PasswordResetView()
+            print(email_view.get_template_names())
+            uidb64 = "uidb64"
+            token = "token"
+            #password_reset_confirm = reverse('')
+            reset_link = (f"{protocol}://{domain}/accounts/reset/{uidb64}/{token}/")
+            print(reset_link)
+            password_reset_email = format_html(
+            "<html>Please go to the following page and choose a new password: <a href='{}'>Reset password page</a></html>", reset_link
+            )
+            password_reset_subject = "Password reset request"
+            #with open("./templates/registration/password_reset_email.html", "r") as f:
+            #    password_reset_email = format_html(f.read())
+            print(password_reset_email)
+            send_mail(subject=password_reset_subject,
+              message=password_reset_email,
+              from_email=form.from_email,
+              recipient_list=[user_email],
+              html_message=password_reset_email,
+             )
+            return HttpResponseRedirect(reverse('password_reset_done'))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = MyPasswordResetForm()
+
+    # password_reset_form: registration/password_reset_form.html
+    return render(
+                    request, 
+                    "registration/password_reset_form.html", 
+                    {"form": form}
+                  )
+
+
 # Definition of views
 def credits(request):
     """Return the credits message"""

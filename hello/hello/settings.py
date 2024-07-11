@@ -194,4 +194,13 @@ STORAGES = {
 LOGIN_REDIRECT_URL = '/bands/bands/'
 LOGOUT_REDIRECT_URL = '/bands/bands/'
 # For resetting password
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# With Django default email backed
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Azure email backend
+# https://pypi.org/project/django-azure-communication-email/
+# Now, when you use django.core.mail.send_mail, Azure 
+# Communication Email service will send the messages by default.
+EMAIL_BACKEND = 'django_azure_communication_email.EmailBackend'
+AZURE_KEY_CREDENTIAL = config("AZURE_COMM_KEY", "")
+AZURE_COMMUNICATION_ENDPOINT = config("AZURE_COMM_ENDPOINT", "")
