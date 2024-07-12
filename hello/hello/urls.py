@@ -46,9 +46,9 @@ urlpatterns = [
     # Registering all the URL routes in the bands app
     path("bands/", include("bands.urls")),
     # for authentication
-    path(route="accounts/password_reset/", 
-         view=home_views.my_password_reset_view,
-         name="my_password_reset_view"),
+    #path(route="accounts/password_reset/", 
+    #     view=home_views.my_password_reset_view,
+    #     name="my_password_reset_view"),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
 
