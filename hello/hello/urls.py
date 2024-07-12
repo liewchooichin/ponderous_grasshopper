@@ -50,6 +50,8 @@ urlpatterns = [
     #     view=home_views.my_password_reset_view,
     #     name="my_password_reset_view"),
     path('accounts/', include('django.contrib.auth.urls')),
+    # Include content app
+    path("content/", include("content.urls")),
 ]
 
 if settings.DEBUG:

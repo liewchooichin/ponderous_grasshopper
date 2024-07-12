@@ -24,16 +24,20 @@
         <a class="navbar-brand" href={% url "index" %}>RiffMates</a>
             <!--login logout button-->
             <div>
-              {% if user.is_authenticated %}
-                <p class="text-white bg-dark">{{ user.username }}</p>
-
-              <form id="logout-form" method="post" 
+              {% if user.is_authenticated %}                
+              <p class="text-white bg-dark">{{ user.username }}</p>
+              <form id="password-change-form" method="POST"
+                action={% url 'password_change' %}>
+                {% csrf_token %}
+                <button type="submit">Change password</button>
+              </form>
+              <form id="logout-form" method="POST" 
                 action={% url 'logout' %} >
                 {% csrf_token %}
                 <button type="submit">Logout</button>
               </form>
               {% else %}
-                <form id="login-form" method="post"
+                <form id="login-form" method="POST"
                 action={% url 'login' %}>
                 {% csrf_token %}
                 <button type="submit">Login</button>

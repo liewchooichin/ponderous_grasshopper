@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'home',
     'bands',
+    'content',
 ]
 
 # Following the cors example
@@ -204,3 +205,4 @@ LOGOUT_REDIRECT_URL = '/bands/bands/'
 EMAIL_BACKEND = 'django_azure_communication_email.EmailBackend'
 AZURE_KEY_CREDENTIAL = config("AZURE_COMM_KEY", "")
 AZURE_COMMUNICATION_ENDPOINT = config("AZURE_COMM_ENDPOINT", "")
+DEFAULT_FROM_EMAIL="<DoNotReply@f0cf672a-d027-4901-bfea-018e517e7e1c.azurecomm.net>"
