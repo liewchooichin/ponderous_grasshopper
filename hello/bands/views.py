@@ -266,25 +266,3 @@ def musician_restricted(request, musician_id):
     return render(request, "restricted_page.html", data)
 
 
-# Room edit form view
-#@login_required
-class RoomFormView(generic.FormView):
-    template_name = "room_detail_form.html"
-    form_class = RoomForm
-    success_url = "/content/comment_done/"
-    context = {
-        'title': "Room detail edit",
-        'message': "The detail has been saved.",
-    }
-
-    def form_valid(self, form):
-        return super().form_valid(form)
-
-# Room create view
-#@login_required
-class RoomCreateView(generic.CreateView):
-    model = Room
-    fields = ["name", "venue", "size"]
-    template_name = "room_create_form.html"
-    success_url = "/content/comment_done/"
-    context = {'title': "Room create"}
