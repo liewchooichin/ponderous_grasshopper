@@ -1,0 +1,1612 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2024-07-09T10:28:13.835",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "10",
+        "object_repr": "Musician(id=10, first_104 last_104)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2024-07-09T10:30:32.442",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "11",
+        "object_repr": "Musician(id=11, first_105 last_106)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2024-07-09T10:31:07.107",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "12",
+        "object_repr": "Musician(id=12, first_106 last_106)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2024-07-09T10:31:41.104",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "13",
+        "object_repr": "Musician(id=13, first_107 last_107)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2024-07-09T10:32:05.675",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "14",
+        "object_repr": "Musician(id=14, first_108 last_109)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2024-07-09T11:05:51.639",
+        "user": 1,
+        "content_type": 15,
+        "object_id": "3",
+        "object_repr": "BandGroup(id=3, name=Good Vibe)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Members\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2024-07-09T11:06:22.776",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "3",
+        "object_repr": "Musician(id=3, John Bonham)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Style of music\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2024-07-09T11:20:09.121",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "2",
+        "object_repr": "Room(id=2, name=Daisy)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Capacity of room\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2024-07-09T11:20:16.075",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "4",
+        "object_repr": "Room(id=4, name=Rain tree)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Capacity of room\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2024-07-09T11:20:24.956",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "8",
+        "object_repr": "Room(id=8, name=Sunflower)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Capacity of room\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2024-07-09T11:20:46.050",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "9",
+        "object_repr": "Room(id=9, name=Coconut)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2024-07-09T11:21:01.735",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "10",
+        "object_repr": "Room(id=10, name=Rose)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2024-07-09T11:21:26.402",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "3",
+        "object_repr": "Venue (id=3, name=Garden)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2024-07-09T11:21:40.209",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "11",
+        "object_repr": "Room(id=11, name=Mimosa)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2024-07-09T11:22:28.105",
+        "user": 1,
+        "content_type": 13,
+        "object_id": "12",
+        "object_repr": "Room(id=12, name=Honey grass)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2024-07-09T11:32:02.721",
+        "user": 1,
+        "content_type": 15,
+        "object_id": "4",
+        "object_repr": "BandGroup(id=4, name=Starry Night)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2024-07-09T11:32:28.009",
+        "user": 1,
+        "content_type": 15,
+        "object_id": "5",
+        "object_repr": "BandGroup(id=5, name=Breezy beach)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2024-07-09T11:32:46.381",
+        "user": 1,
+        "content_type": 15,
+        "object_id": "6",
+        "object_repr": "BandGroup(id=6, name=Tropical forest)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2024-07-09T11:32:56.703",
+        "user": 1,
+        "content_type": 15,
+        "object_id": "5",
+        "object_repr": "BandGroup(id=5, name=Breezy beach)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Members\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2024-07-10T12:52:26.138",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "nicky",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"user profile\", \"object\": \"UserProfile object (1)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2024-07-10T12:54:17.544",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "nicky",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2024-07-10T13:07:11.771",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "nicky",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2024-07-10T13:23:23.797",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "momo",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"user profile\", \"object\": \"UserProfile object (2)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2024-07-10T13:23:43.900",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "momo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2024-07-10T15:58:11.941",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "nicky",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"name\": \"user profile\", \"object\": \"UserProfile object (1)\", \"fields\": [\"Musician profiles\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2024-07-10T15:58:29.324",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "momo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"name\": \"user profile\", \"object\": \"UserProfile object (2)\", \"fields\": [\"Musician profiles\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2024-07-11T10:39:51.669",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "3",
+        "object_repr": "momo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2024-07-11T10:40:03.151",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "nicky",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2024-07-11T15:27:13.007",
+        "user": 1,
+        "content_type": 4,
+        "object_id": "2",
+        "object_repr": "nicky",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Email address\"]}}]"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 2,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 3,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 4,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 4,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 4,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view user",
+        "content_type": 4,
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 5,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 6,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add customer",
+        "content_type": 7,
+        "codename": "add_customer"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change customer",
+        "content_type": 7,
+        "codename": "change_customer"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete customer",
+        "content_type": 7,
+        "codename": "delete_customer"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view customer",
+        "content_type": 7,
+        "codename": "view_customer"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add order detail",
+        "content_type": 8,
+        "codename": "add_orderdetail"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change order detail",
+        "content_type": 8,
+        "codename": "change_orderdetail"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete order detail",
+        "content_type": 8,
+        "codename": "delete_orderdetail"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view order detail",
+        "content_type": 8,
+        "codename": "view_orderdetail"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add product",
+        "content_type": 9,
+        "codename": "add_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change product",
+        "content_type": 9,
+        "codename": "change_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete product",
+        "content_type": 9,
+        "codename": "delete_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view product",
+        "content_type": 9,
+        "codename": "view_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add blog post",
+        "content_type": 10,
+        "codename": "add_blogpost"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change blog post",
+        "content_type": 10,
+        "codename": "change_blogpost"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete blog post",
+        "content_type": 10,
+        "codename": "delete_blogpost"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view blog post",
+        "content_type": 10,
+        "codename": "view_blogpost"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add musician",
+        "content_type": 11,
+        "codename": "add_musician"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change musician",
+        "content_type": 11,
+        "codename": "change_musician"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete musician",
+        "content_type": 11,
+        "codename": "delete_musician"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view musician",
+        "content_type": 11,
+        "codename": "view_musician"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+        "name": "Can add venue",
+        "content_type": 12,
+        "codename": "add_venue"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+        "name": "Can change venue",
+        "content_type": 12,
+        "codename": "change_venue"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 47,
+    "fields": {
+        "name": "Can delete venue",
+        "content_type": 12,
+        "codename": "delete_venue"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 48,
+    "fields": {
+        "name": "Can view venue",
+        "content_type": 12,
+        "codename": "view_venue"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 49,
+    "fields": {
+        "name": "Can add room",
+        "content_type": 13,
+        "codename": "add_room"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 50,
+    "fields": {
+        "name": "Can change room",
+        "content_type": 13,
+        "codename": "change_room"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 51,
+    "fields": {
+        "name": "Can delete room",
+        "content_type": 13,
+        "codename": "delete_room"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 52,
+    "fields": {
+        "name": "Can view room",
+        "content_type": 13,
+        "codename": "view_room"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 53,
+    "fields": {
+        "name": "Can add band",
+        "content_type": 14,
+        "codename": "add_band"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 54,
+    "fields": {
+        "name": "Can change band",
+        "content_type": 14,
+        "codename": "change_band"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 55,
+    "fields": {
+        "name": "Can delete band",
+        "content_type": 14,
+        "codename": "delete_band"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 56,
+    "fields": {
+        "name": "Can view band",
+        "content_type": 14,
+        "codename": "view_band"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 57,
+    "fields": {
+        "name": "Can add band group",
+        "content_type": 15,
+        "codename": "add_bandgroup"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 58,
+    "fields": {
+        "name": "Can change band group",
+        "content_type": 15,
+        "codename": "change_bandgroup"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 59,
+    "fields": {
+        "name": "Can delete band group",
+        "content_type": 15,
+        "codename": "delete_bandgroup"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 60,
+    "fields": {
+        "name": "Can view band group",
+        "content_type": 15,
+        "codename": "view_bandgroup"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 61,
+    "fields": {
+        "name": "Can add user profile",
+        "content_type": 16,
+        "codename": "add_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 62,
+    "fields": {
+        "name": "Can change user profile",
+        "content_type": 16,
+        "codename": "change_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 63,
+    "fields": {
+        "name": "Can delete user profile",
+        "content_type": 16,
+        "codename": "delete_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 64,
+    "fields": {
+        "name": "Can view user profile",
+        "content_type": 16,
+        "codename": "view_userprofile"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$720000$rtFTPLTNdqVAjbQ3rsDrir$pN5waEtdhS0crVfUmULc43136Ornk/ic4IWgn/2s8MI=",
+        "last_login": "2024-07-12T15:33:09.350",
+        "is_superuser": true,
+        "username": "codespace",
+        "first_name": "",
+        "last_name": "",
+        "email": "liewchooichin@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-06-15T11:52:26.392",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$720000$wZUUIgALqlRap8sOlNnwqE$Rdnm7UoHCubQ0nxqUEQhJRivUQYIgMuAf9AxHuGfn20=",
+        "last_login": "2024-07-10T17:57:41",
+        "is_superuser": false,
+        "username": "nicky",
+        "first_name": "Nicky",
+        "last_name": "Riff",
+        "email": "catreadingwritingbook@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-07-10T12:52:25",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$720000$K0GTnSOttKUxkAKF5RbRTi$EQRKBMFJ7jm3mnaRPGBODZu4G7wBdhNnN5MNdtNEEe8=",
+        "last_login": "2024-07-12T15:33:22.227",
+        "is_superuser": false,
+        "username": "momo",
+        "first_name": "Momo",
+        "last_name": "Peach",
+        "email": "liewchooichin@yahoo.com.sg",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-07-10T13:23:23",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "customerapi",
+        "model": "customer"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "customerapi",
+        "model": "orderdetail"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "customerapi",
+        "model": "product"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "firstblog",
+        "model": "blogpost"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "bands",
+        "model": "musician"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "bands",
+        "model": "venue"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "bands",
+        "model": "room"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "bands",
+        "model": "band"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+        "app_label": "bands",
+        "model": "bandgroup"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+        "app_label": "bands",
+        "model": "userprofile"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "0qxivav9jw8mkiak8r361p2q4uooza4s",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQRP-FsyF0t6TUo3e_gSzsVqoGktKejP8uTXqwx5n3Zj7K07Ymv1VZ_MzqqlBd_rtA8SV5B_yk_Cg6lrwuc9C7og9a9b2wvG-HezpIVFNbCwMzEk1iojMBqO96wyDYLqyYwUmwbgy2ZRfRGUDGEQegDqFhUN8fDWI4Dg:1sS9uq:jg7CqAJmQCkIBXQUGl_DSSPnBRDSxw8NUR8NvOM870c",
+        "expire_date": "2024-07-26T14:38:00.794"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "44txzfbxrfhyps439kcp71fi70dl0g43",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFDebt07zcQZgCpGkhKuzL-uzbpQrf3nHNfLMRtrWEbeQlzYmc2sdPvhpEeue0g3WO7dU69rcuMfFf4QQe_9pSfl8P9O6hx1G-tCT04jVEqSHYSBYwiaVXUgoz2TlgvyUEpGjChJe1ROisMpOKACrH3B8d7N3Y:1sRTsO:4HqjgScYvbhhQ_G9tnrN6SEDSRv2-S-N0m9Zwav2iD4",
+        "expire_date": "2024-07-24T17:44:40.394"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "46wez8v6999xyl1a0kkmasr77oc2tiec",
+    "fields": {
+        "session_data": ".eJxVjDEOgzAQBP_iOrKwfTaQMj1vsNbcOZBEIGGoovw9IFEk7c7MvlXEtg5xK7LEkdVVOXX53RL6p0wH4Aem-6z7eVqXMelD0SctuptZXrfT_TsYUIa9hmmsl9oFCaBakuScMqgi8qEN1lQODG8ZO3bZBG4zUwNYstnA9erzBe_4OFE:1sRSEH:NdskE_DyJYAxXwXcT4fzpP-8gsbVjAN_YcaVLoTeF0Y",
+        "expire_date": "2024-07-24T15:59:09.600"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4i7bkvihppu20ijkmoa39jggd6sae9kh",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSEMA4Vx6d5vIMOjUjU0Ke3K-O_apAvd3nPOfYnA21rD1ssSpizOAsTpd4ucHqXtIN-53WaZ5rYuU5S7Ig_a5XXO5Xk53L-Dyr1-a5-yQ2SjABT6FHFg0A6HXHQimyxap0brCQ05RQrJW00mG6MBRh-deH8ArBA1-w:1sRBdK:mvTgGIebGyYcSQ1RPpx7IwFemeW_28omG3r6tts5XyM",
+        "expire_date": "2024-07-23T22:15:54.169"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6hzogjutzf09koju82goko2ryqzxzf7v",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSEMA4Vx6d5vIMOjUjU0Ke3K-O_apAvd3nPOfYnA21rD1ssSpizOAsTpd4ucHqXtIN-53WaZ5rYuU5S7Ig_a5XXO5Xk53L-Dyr1-a5-yQ2SjABT6FHFg0A6HXHQimyxap0brCQ05RQrJW00mG6MBRh-deH8ArBA1-w:1sR0TW:wSYzqCa9K956X_qRriwkf3u93QRHnsTOdX5IVvUpFB4",
+        "expire_date": "2024-07-23T10:21:02.382"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "889p1k1t4vvk0ldunonn19ctnoas66r0",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hDoMIAu3fcMhGFAqoYmpV0Z765NutDtf-_9lwhxW2vYel7CxOIiQJx-N4rpkdsO-B7bbZZpbusykdwVedAux5nz83q4fwc19vqty5mTgozGZQNsSUUk61lrpQpkpQZLvhgyPgFGAHaMBdmi84k06kG8P-PLN5Y:1sSA3N:0_0BiXMf2HmsNGPhH-GgmiZ00kbV_sLhqPY6zNLIln4",
+        "expire_date": "2024-07-26T14:46:49.111"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "8uzmwez08kzruv5fig4b77td35niwa4w",
+    "fields": {
+        "session_data": ".eJxVjDEOgzAQBP_iOrKwfTaQMj1vsNbcOZBEIGGoovw9IFEk7c7MvlXEtg5xK7LEkdVVOXX53RL6p0wH4Aem-6z7eVqXMelD0SctuptZXrfT_TsYUIa9hmmsl9oFCaBakuScMqgi8qEN1lQODG8ZO3bZBG4zUwNYstnA9erzBe_4OFE:1sRTYy:XIz1uUm3N2A8rwq5VVtsppauYiZPAwO1yvhFOOO8S2Q",
+        "expire_date": "2024-07-24T17:24:36.735"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "9o2ycgd4iiiy8cld48a43hqw237n73ow",
+    "fields": {
+        "session_data": "eyJfcGFzc3dvcmRfcmVzZXRfdG9rZW4iOiJjYTBiNmMtM2FkMjg0ZmRkMDdmOGQ1YTJmNjc2YzA3OTIxNzFiYzUifQ:1sRoPx:y3llAAX8bCED2dpboJbC16yrZhs2NibECyIgVErM46s",
+        "expire_date": "2024-07-25T15:40:41.929"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ba2tvlldmvrh3vobt006e1pnucqkncda",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCgMFCX7j0DGZipVA0kpV0Z765NutDtf-_9l4i4rSVunZc4kzgLLU6_W8L84LoDumO9NZlbXZc5yV2RB-3y2oifl8P9OyjYy7d2ymYayWc2hMgJdKDBeq8wGTDJElrgaRxcdmB40hCCsgHBm2RUACfeH_WON6M:1sLOjU:-Jg2MMkR4otVav4HRKAwDDcS81hUwwVFWWYAnfiDgjY",
+        "expire_date": "2024-07-07T23:02:20.365"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "bht09yhjgizo3tcux5gsb73r4qx3v9et",
+    "fields": {
+        "session_data": ".eJxVjDEOgzAQBP_iOrKwfTaQMj1vsNbcOZBEIGGoovw9IFEk7c7MvlXEtg5xK7LEkdVVOXX53RL6p0wH4Aem-6z7eVqXMelD0SctuptZXrfT_TsYUIa9hmmsl9oFCaBakuScMqgi8qEN1lQODG8ZO3bZBG4zUwNYstnA9erzBe_4OFE:1sRTkn:h_Lh_3JMybKnsl2ROOTV1BpcxTFAV1Yq4tzMhKzuNgU",
+        "expire_date": "2024-07-24T17:36:49.007"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "bnjbobrkm8d7g0r2kwe4bsevegkoc2du",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFhZni5dO83EGBAqoYmpV0Z_12bdKHbe865LxHitrawjbKEicVZoDj9binmR-k74Hvst1nmua_LlOSuyIMOeZ25PC-H-3fQ4mjfOjkka5Jh8AgGSFNxuSqNWevKHI1XFSiDI7JWeYu2kGNEjzoCZCXeH7zwNpg:1sSAAx:O4bnQlgsDNdcgHIC9iBklNkTkXBTRw2z5P60geRZKcQ",
+        "expire_date": "2024-07-26T14:54:39.318"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "d5ezg1kqdbks2k5rnku22ph6ktbaekg6",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSEMA4Vx6d5vIMOjUjU0Ke3K-O_apAvd3nPOfYnA21rD1ssSpizOAsTpd4ucHqXtIN-53WaZ5rYuU5S7Ig_a5XXO5Xk53L-Dyr1-a5-yQ2SjABT6FHFg0A6HXHQimyxap0brCQ05RQrJW00mG6MBRh-deH8ArBA1-w:1sRMNq:H6JcxWtt_qm4RJQ9prVLhOUGyc-qw1m4oGClfExMZkg",
+        "expire_date": "2024-07-24T09:44:38.419"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "f3ashzaox4ydjfeqfe8kxifelyfmctvd",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFhZni5dO83EGBAqoYmpV0Z_12bdKHbe865LxHitrawjbKEicVZoDj9binmR-k74Hvst1nmua_LlOSuyIMOeZ25PC-H-3fQ4mjfOjkka5Jh8AgGSFNxuSqNWevKHI1XFSiDI7JWeYu2kGNEjzoCZCXeH7zwNpg:1sSAmQ:JAsyZMFX1-ZDn3ZAbGwBRjAU-sgyPzH99-msmiehXk8",
+        "expire_date": "2024-07-26T15:33:22.249"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "n7wvia9oz45nb4mkxvwxlxuo5gz4vbwy",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQRP-FsyF0t6TUo3e_gSzsVqoGktKejP8uTXqwx5n3Zj7K07Ymv1VZ_MzqqlBd_rtA8SV5B_yk_Cg6lrwuc9C7og9a9b2wvG-HezpIVFNbCwMzEk1iojMBqO96wyDYLqyYwUmwbgy2ZRfRGUDGEQegDqFhUN8fDWI4Dg:1sS9yG:udnmmuLq57IC7e8ImHTUIy8G9SR2ecN_vmAXGZRf3Zc",
+        "expire_date": "2024-07-26T14:41:32.191"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ntubufcnle1j4rky68b1tli6ivj2vt3b",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hDoMIAu3fcMhGFAqoYmpV0Z765NutDtf-_9lwhxW2vYel7CxOIiQJx-N4rpkdsO-B7bbZZpbusykdwVedAux5nz83q4fwc19vqty5mTgozGZQNsSUUk61lrpQpkpQZLvhgyPgFGAHaMBdmi84k06kG8P-PLN5Y:1sSA4Y:ewEpRKVasJIFP4_RHCSQOn8RTo79YqwvOmV--2OFH50",
+        "expire_date": "2024-07-26T14:48:02.950"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ts70xwqzccgi93w9rrw82bbb1t93kkqf",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFDebt07zcQZgCpGkhKuzL-uzbpQrf3nHNfLMRtrWEbeQlzYmc2sdPvhpEeue0g3WO7dU69rcuMfFf4QQe_9pSfl8P9O6hx1G-tCT04jVEqSHYSBYwiaVXUgoz2TlgvyUEpGjChJe1ROisMpOKACrH3B8d7N3Y:1sRPyT:jZbFzo9Z2YWXy_2Pu7PnOSbclI71AWQspAyVrugWggk",
+        "expire_date": "2024-07-24T13:34:41.270"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 1,
+    "fields": {
+        "first_name": "Steve",
+        "last_name": "Vai",
+        "birth": "1960-06-06",
+        "style": "RELA"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 2,
+    "fields": {
+        "first_name": "John",
+        "last_name": "Lennon",
+        "birth": "1940-10-09",
+        "style": "RELA"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 3,
+    "fields": {
+        "first_name": "John",
+        "last_name": "Bonham",
+        "birth": "1948-07-31",
+        "style": "ROCK"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 5,
+    "fields": {
+        "first_name": "first_100",
+        "last_name": "last_100",
+        "birth": "1990-02-28",
+        "style": "RELA"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 6,
+    "fields": {
+        "first_name": "first_101",
+        "last_name": "last_101",
+        "birth": "1989-04-12",
+        "style": "RELA"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 7,
+    "fields": {
+        "first_name": "first_102",
+        "last_name": "last_102",
+        "birth": "1980-05-21",
+        "style": "RELA"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 9,
+    "fields": {
+        "first_name": "first103",
+        "last_name": "last_103",
+        "birth": "1994-03-17",
+        "style": "RELA"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 10,
+    "fields": {
+        "first_name": "first_104",
+        "last_name": "last_104",
+        "birth": "2000-06-20",
+        "style": "LIVE"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 11,
+    "fields": {
+        "first_name": "first_105",
+        "last_name": "last_106",
+        "birth": "2000-11-08",
+        "style": "ROCK"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 12,
+    "fields": {
+        "first_name": "first_106",
+        "last_name": "last_106",
+        "birth": "2001-04-09",
+        "style": "ROCK"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 13,
+    "fields": {
+        "first_name": "first_107",
+        "last_name": "last_107",
+        "birth": "1971-09-23",
+        "style": "LIVE"
+    }
+},
+{
+    "model": "bands.musician",
+    "pk": 14,
+    "fields": {
+        "first_name": "first_108",
+        "last_name": "last_109",
+        "birth": "1972-10-30",
+        "style": "LIVE"
+    }
+},
+{
+    "model": "bands.venue",
+    "pk": 1,
+    "fields": {
+        "name": "Flower"
+    }
+},
+{
+    "model": "bands.venue",
+    "pk": 2,
+    "fields": {
+        "name": "Tree"
+    }
+},
+{
+    "model": "bands.venue",
+    "pk": 3,
+    "fields": {
+        "name": "Garden"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 1,
+    "fields": {
+        "name": "Lily",
+        "venue": 1,
+        "size": "S"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 2,
+    "fields": {
+        "name": "Daisy",
+        "venue": 1,
+        "size": "M"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 3,
+    "fields": {
+        "name": "Acacia",
+        "venue": 2,
+        "size": "S"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 4,
+    "fields": {
+        "name": "Rain tree",
+        "venue": 2,
+        "size": "L"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 5,
+    "fields": {
+        "name": "Yellow flame",
+        "venue": 2,
+        "size": "S"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 6,
+    "fields": {
+        "name": "Bottle brush",
+        "venue": 2,
+        "size": "S"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 7,
+    "fields": {
+        "name": "Tulip",
+        "venue": 1,
+        "size": "S"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 8,
+    "fields": {
+        "name": "Sunflower",
+        "venue": 1,
+        "size": "L"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 9,
+    "fields": {
+        "name": "Coconut",
+        "venue": 2,
+        "size": "L"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 10,
+    "fields": {
+        "name": "Rose",
+        "venue": 1,
+        "size": "M"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 11,
+    "fields": {
+        "name": "Mimosa",
+        "venue": 3,
+        "size": "M"
+    }
+},
+{
+    "model": "bands.room",
+    "pk": 12,
+    "fields": {
+        "name": "Honey grass",
+        "venue": 3,
+        "size": "M"
+    }
+},
+{
+    "model": "bands.bandgroup",
+    "pk": 1,
+    "fields": {
+        "name": "Restful Field",
+        "members": [
+            2,
+            1
+        ]
+    }
+},
+{
+    "model": "bands.bandgroup",
+    "pk": 2,
+    "fields": {
+        "name": "Vibrant",
+        "members": [
+            2,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "bands.bandgroup",
+    "pk": 3,
+    "fields": {
+        "name": "Good Vibe",
+        "members": [
+            9,
+            3,
+            1
+        ]
+    }
+},
+{
+    "model": "bands.bandgroup",
+    "pk": 4,
+    "fields": {
+        "name": "Starry Night",
+        "members": [
+            13
+        ]
+    }
+},
+{
+    "model": "bands.bandgroup",
+    "pk": 5,
+    "fields": {
+        "name": "Breezy beach",
+        "members": [
+            5,
+            7,
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "bands.bandgroup",
+    "pk": 6,
+    "fields": {
+        "name": "Tropical forest",
+        "members": [
+            5,
+            6,
+            12,
+            13
+        ]
+    }
+},
+{
+    "model": "bands.userprofile",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "musician_profiles": [
+            10
+        ],
+        "venues_operated": [
+            1
+        ]
+    }
+},
+{
+    "model": "bands.userprofile",
+    "pk": 2,
+    "fields": {
+        "user": 3,
+        "musician_profiles": [
+            5
+        ],
+        "venues_operated": [
+            3
+        ]
+    }
+}
+]

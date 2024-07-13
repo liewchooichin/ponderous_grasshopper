@@ -17,13 +17,13 @@ class CommentForm(forms.Form):
                              initial="",
                              show_hidden_initial=True,
                              help_text="Your email")
-    subject = forms.CharField(max_length=160, 
+    subject = forms.CharField(max_length=10, 
                               label="Subject", 
                               initial="",
                               show_hidden_initial=True,
                               help_text="The subject of the comment")
     comment = forms.CharField(
-        max_length=300,
+        max_length=10,
         label="Comments",
         initial="",
         help_text="Max length: 300 characters",
