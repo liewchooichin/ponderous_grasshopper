@@ -106,25 +106,32 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hello.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+# SQLite Database
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': config("SQL_NAME", ""),
-        'HOST': config("SQL_SERVER", ""),
-        'PORT': '1433',
-        'USER': config("SQL_USER",""),
-        'PASSWORD': config("SQL_PASSWORD",""),
-        'OPTIONS': {
-	            'driver': config('SQL_DRIVER', ""),
-                'timeout': 600,
-	        },
-        'CONN_HEALTH_CHECKS': True,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Azure SQL Database
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mssql',
+#         'NAME': config("SQL_NAME", ""),
+#         'HOST': config("SQL_SERVER", ""),
+#         'PORT': '1433',
+#         'USER': config("SQL_USER",""),
+#         'PASSWORD': config("SQL_PASSWORD",""),
+#         'OPTIONS': {
+# 	            'driver': config('SQL_DRIVER', ""),
+#                 'timeout': 600,
+# 	        },
+#         'CONN_HEALTH_CHECKS': True,
+#     }
+# }
 
 
 # Password validation
