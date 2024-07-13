@@ -1,0 +1,19 @@
+<!--templates/room_detail_edit.html-->
+{% include "base.html" %}
+
+{% block title %}
+    {{ block.super }} {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button 
+            class="btn btn-dark"
+            type="submit"
+        >
+            Save
+        </button>
+    </form>
+{% endblock content %}

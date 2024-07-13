@@ -7,8 +7,10 @@ from django.utils.html import format_html
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import Http404
+from django.views import generic
 
 from bands.models import Musician, Venue, Room, BandGroup
+from bands.forms import RoomForm
 from home import views, page_util
 
 # Pagination utilities
@@ -262,3 +264,27 @@ def musician_restricted(request, musician_id):
         'content': content,
     }
     return render(request, "restricted_page.html", data)
+
+
+# Room edit form view
+#@login_required
+class RoomFormView(generic.FormView):
+    template_name = "room_detail_form.html"
+    form_class = RoomForm
+    success_url = "/content/comment_done/"
+    context = {
+        'title': "Room detail edit",
+        'message': "The detail has been saved.",
+    }
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+# Room create view
+#@login_required
+class RoomCreateView(generic.CreateView):
+    model = Room
+    fields = ["name", "venue", "size"]
+    template_name = "room_create_form.html"
+    success_url = "/content/comment_done/"
+    context = {'title': "Room create"}

@@ -23,5 +23,9 @@ urlpatterns = [
           view=band_views.restricted_page, name="restricted_page"),
      path(route="musician_restricted/<int:musician_id>/", 
           view=band_views.musician_restricted, name="musician_restricted"),
+     path(route="room_detail_form/<int:room_id>/", 
+          view=band_views.RoomFormView.as_view(), name="room_detail_form"),
+     path(route="room_create_form/", 
+          view=band_views.RoomCreateView.as_view(), name="room_create_form"),
 ]
 
