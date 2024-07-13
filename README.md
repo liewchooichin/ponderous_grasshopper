@@ -1,4 +1,25 @@
-# README
+# My Notes
+
+
+
+
+
+## Using form template
+
+13 Jul, Sat
+
+Following the tutorial to create a comment form with template.
+
+### Location of form template
+
+When trying to use form template, I encountered the problem of the location of the template. The error encountered was **TemplateNotFound**. I tried many different locations.
+
+The first location was `\templates\` where I have been putting the various html files. However this did not work for the form template. Finally the location that work is `\content\templates\form_template.html`. If I put the `form_template.html` in `\content\templates\content\form_template.html`, it would not work.
+
+### Placement of button
+
+The `<form>`, `{% csrf_token %}` and `<button>` should be put in the parent form html. The form template should contains just the from styling.
+
 
 ## To use Azure Email Backend
 
@@ -26,8 +47,6 @@ python manage.py check
 ## Location for templates
 
 Location for **templates** is usually in the same level as the **manage.py** directory. Whether to place the **templates** in the **project** or the **app** directory is a matter of choice. Placing all `html` in the project directory is the approach in *Django in Action*.
-
-
 
 # Useful info for deployment to Azure web apps
 

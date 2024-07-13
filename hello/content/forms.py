@@ -17,16 +17,16 @@ class CommentForm(forms.Form):
                              initial="",
                              show_hidden_initial=True,
                              help_text="Your email")
-    subject = forms.CharField(max_length=10, 
+    subject = forms.CharField(max_length=100, 
                               label="Subject", 
                               initial="",
                               show_hidden_initial=True,
-                              help_text="The subject of the comment")
+                              help_text="Topic or subject of your comment")
     comment = forms.CharField(
-        max_length=10,
+        max_length=300,
         label="Comments",
         initial="",
-        help_text="Max length: 300 characters",
+        help_text="Max length 300 characters",
         show_hidden_initial=True,
         widget=forms.Textarea(
             attrs = {"rows": "6", "cols": "50"}
