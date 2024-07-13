@@ -1,0 +1,39 @@
+<div class="form-group">
+
+
+    {% for field in form %}
+    
+    {{ field.label }}
+    <p>
+    <input type="text" class="form-control"
+    id="id_{{ field.auto_id}}__helptext" 
+    name={{ field.html_name }}
+    aria-describedby={{ field.help_text|safe }}
+    placeholder=""
+    {% if field.value %}
+        value="{{ field.value }}"
+    {% endif %}
+    >
+    </p>
+
+    <small id="id_{{field.auto_id }}__helptext"
+    class="form-text text-muted">
+    {{ field.help_text }}
+    </small>
+    </p>
+
+    <p>
+    {% if field.errors %}
+        <small class="text-danger">
+        {{ field.errors }}
+        </small>
+        </p>
+        {% endif %}
+    {% endfor %}
+
+    <!--
+    <button class="btn btn-dark" type="submit">
+        Submit my comment</button>
+    -->
+        
+</div>

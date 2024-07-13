@@ -2,7 +2,8 @@
 
 ## To use Azure Email Backend
 
-Note: Partly successful. Problem with *reset_link--uid and token*.
+Install the package [django-azure-communication-email](https://pypi.org/project/django-azure-communication-email/)
+
 
 This is how to specify the **EMAIL_BACKEND** in the **settings.py**.
 ```

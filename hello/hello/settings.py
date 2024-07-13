@@ -14,6 +14,9 @@ from pathlib import Path
 # added by me
 from decouple import config
 
+# form templates
+from django.forms.renderers import TemplatesSetting
+
 # follow the CORS example
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
@@ -206,3 +209,9 @@ EMAIL_BACKEND = 'django_azure_communication_email.EmailBackend'
 AZURE_KEY_CREDENTIAL = config("AZURE_COMM_KEY", "")
 AZURE_COMMUNICATION_ENDPOINT = config("AZURE_COMM_ENDPOINT", "")
 DEFAULT_FROM_EMAIL="<DoNotReply@f0cf672a-d027-4901-bfea-018e517e7e1c.azurecomm.net>"
+
+# For form templates
+#class CustomFormRenderer(TemplatesSetting):
+#    form_template_name = "form_template.html"
+
+#FORM_RENDER = "hello.settings.CustomFormRenderer"
