@@ -1,7 +1,22 @@
 # My Notes
 
 
+## Get the current `request.user`
 
+14 Jul, Sun
+
+To make a filter list according to the current login user:
+
+```
+# Get the user id of the current request.user
+current_user = User.objects.get(username=request.user)
+print(f"\t{request.user=} {current_user.id} {current_user.username}")
+# No need to put "" around the content of the filter.
+data = {
+    'ad': MyModel.objects.filter(an_attr_in_MyModel=current_user.id)
+}
+
+```
 
 
 ## Using form template

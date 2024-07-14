@@ -5,6 +5,7 @@ from django.utils.html import format_html
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django import views
+from django.contrib.auth.models import User
 
 # for env variables
 from decouple import config
@@ -114,14 +115,16 @@ def ads_listing(request):
 
 def user_edit_ads(request):
     """A user can edit their own ads"""
+    # Get the user id of the current request.user
+    current_user = User.objects.get(username=request.user)
+    print(f"\t{request.user=} {current_user.id} {current_user.username}")
     data = {
-        'ad': SeekingAd.objects.all(),
+        'ad': SeekingAd.objects.filter(owner=current_user.id)
     }
 
     return render(request=request,
            template_name="user_edit_ads.html",
            context=data)
-
 
 
 @login_required
@@ -161,7 +164,6 @@ def put_an_ads(request, ad_id=0):
             return redirect("ads_listing")
     
     # GET or form is not valid
-    print("Ad", ad)
     data = {
         'title': "Put an ads",
         'form': form,
