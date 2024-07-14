@@ -1,0 +1,15 @@
+<!--Seeking ad generic delete view-->
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} Generic create
+{% endblock title %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-dark" type="submit">
+            Confirm delete</button>
+    </form>
+{% endblock content %}

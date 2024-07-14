@@ -1,0 +1,79 @@
+<!--A user can put a classified ads -->
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            
+            {{ form.seeking.label }}
+            <p>
+            <select class="form-select" aria-label="Strange">
+                <option selected>Open this select menu</option>
+                {% for item in form.seeking %}
+                    <option value="{{ item }}"></option>
+                {% endfor %}
+            </select>
+            </p>
+
+            <small 
+                id="{{ form.seeking.id_for_label }}__helptext"
+                class="form-text text-muted"
+            >
+                {{ form.seeking.help_text }}
+            </small>
+            </p>
+        
+            <p>
+            {% if form.seeking.errors %}
+                <small class="text-danger">
+                    {{ form.seeking.errors }}
+                </small>
+                </p>
+            {% endif %}
+
+            {{ form.musician.label}}
+           <select class="form-select" aria-label="">
+                <option selected>Open this select menu</option>
+                {% for item in form.musician %}
+                    <option value="{{ item }}">
+                        {{ item.first_name }} {{ item.last_name }}
+                    </option>
+                {% endfor %}
+           </select>
+
+           {{ form.band.label}}
+           <select class="form-select" aria-label="">
+                <option selected>Open this select menu</option>
+                {% for item in form.band %}
+                    <option value="{{ item }}"></option>                  
+                {% endfor %}
+           </select>
+
+           <div class="input-group">
+                <span class="input-group-text">{{ form.ads.label }}</span>
+                <textarea class="form-control" aria-label="{{ form.ads.label }}"></textarea>
+                
+                <small 
+                id="{{ form.ads.id_for_label }}__helptext"
+                class="form-text text-muted"
+                >
+                {{ form.ads.help_text }}
+            </small>
+           </div>
+
+        </div>        
+        
+        <button 
+            class="btn btn-dark"
+            type="submit"
+            >
+            Submit
+        </button>
+    </form>
+{% endblock content %}

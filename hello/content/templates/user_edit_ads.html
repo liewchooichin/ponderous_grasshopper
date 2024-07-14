@@ -1,0 +1,63 @@
+<!--edit ads by users-->
+<!--When you call render() from a view, the request object you pass in
+gets included in the template’s context dictionary. That means anything in the request can be accessed within your template.-->
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} Edit ads
+{% endblock title %}
+
+{% block content %}
+    <h2>User: {{ request.user }}</h2>
+
+    <!--This section is for bands-->
+    <p>
+        <h2>Bands looking for musicians</h2>
+        {% for item in ad %}
+            {{ item.id }} {{item.owner}}
+            {% if item.owner == request.user %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{item.id}} {{ item.band.name }} 
+                    </h5>
+                    <p class="card-text">
+                        {{ item.create_date }}
+                        <br>
+                        {{ item.ads }}
+                    </p>
+                    <a href={% url 'edit_ads' item.id %} 
+                    class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </p>
+
+    <!--This section is for musicians-->
+    <p>
+        <h2>Bands looking for musicians</h2>
+        {% for item in ad %}
+            {{ item.id }} {{item.owner}}
+            {% if item.owner == request.user %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{item.id}} {{ item.musician.name }} 
+                    </h5>
+                    <p class="card-text">
+                        {{ item.create_date }}
+                        <br>
+                        {{ item.ads }}
+                    </p>
+                    <a href={% url 'edit_ads' item.id %} 
+                    class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+            {% endif %}
+        
+        {% endfor %}
+    </p>
+
+
+{% endblock content %}

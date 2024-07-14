@@ -18,12 +18,18 @@ class MusicianBandChoice(models.TextChoices):
 class SeekingAd(models.Model):
     # This field gets automatically populated with
     # the current date when the object gets created.
+    id = models.SmallAutoField(primary_key=True)
     create_date = models.DateField(auto_now_add=True)
     # A foreign key of the user who owns the ad
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    seeking_choices = {
+        "M": "MUSICIAN",
+        "B": "BAND"
+    }
     seeking = models.CharField(
         max_length=1,
-        choices=MusicianBandChoice.choices
+        #choices=MusicianBandChoice.choices
+        choices = seeking_choices,
     )
     # A musician seeking a band
     musician = models.ForeignKey(
@@ -43,17 +49,17 @@ class SeekingAd(models.Model):
     )
     # Text to store the ads
     ads = models.TextField(
-        max_length=200,
+        max_length=300,
     )
 
     class Meta:
-        ordering = ["create_date"]
+        ordering = ["-create_date"]
 
     def __str__(self):
-        return f"SeekingAd(id={self.id}, seeking={self.seeking})"
+        return f"SeekingAd(id={self.id}, owner={self.owner}({self.owner.id}))"
     
     def clean(self):
-        """(1) When seeking a musician, ensure the band field gets 
+        """ (1) When seeking a musician, ensure the band field gets 
             populated and the musician field is empty.
             (2) When seeking a band, ensure the musician field gets
             populated and the band field is empty.

@@ -5,7 +5,7 @@ from datetime import datetime
 
 def index(request):
     context = {
-        "title": "Django example",
+        "title": "Octocat",
         "today": str(datetime.today()),
     }
     return render(request, "hello_index.html", context)

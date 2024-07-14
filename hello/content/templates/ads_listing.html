@@ -1,0 +1,46 @@
+<!--ads_listing.html-->
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} {{ 'title '}}
+{% endblock title %}
+
+{% block content %}
+    <h1>Classified Ads</h1>
+    <!--Musician seeking a band-->
+    <h2>Trying to find a musician to join your band?</h2>
+    {% for m in seeking_musician %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">
+                {{ m.band.name }} 
+            </h5>
+            <p class="card-text">
+                {{ m.create_date }}
+                <br>
+                {{ m.ads }}
+            </p>
+            <a href="#" class="btn btn-primary">More</a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!--A band seeking a musician-->
+    <h2>Looking for a band to join?</h2>
+    {% for b in seeking_band %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">
+                {{ b.musician.first_name }} {{ b.musician.last_name }}
+            </h5>
+            <p class="card-text">
+                {{ b.create_date }}
+                <br>
+                {{ b.ads }}
+            </p>
+            <a href="#" class="btn btn-primary">More</a>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock content %}
