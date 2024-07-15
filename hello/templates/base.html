@@ -76,25 +76,25 @@
                     {{ url_page.1 }}</a></li>
                 {% endfor %}
               
-                <li><a class="dropdown-item" href={% url 'comment_form' %}>Comment</a></li>
-                <li><a class="dropdown-item" href={% url 'ads_listing' %}>Ads listing</a></li>
-                <li><a class="dropdown-item" href={% url 'put_an_ads' %}>Put an ads</a></li>
-                <li><a class="dropdown-item" href={% url 'user_edit_ads' %}>User edit ads</a></li>
+                <li><a class="dropdown-item" href="{% url 'comment_form' %}">Comment</a></li>
+                <li><a class="dropdown-item" href="{% url 'ads_listing' %}">Ads listing</a></li>
+                <li><a class="dropdown-item" href="{% url 'put_an_ads' %}">Put an ads</a></li>
+                <li><a class="dropdown-item" href="{% url 'user_edit_ads' %}">User edit ads</a></li>
                 <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" 
-                    href={% url 'seeking_ads_generic_create_view' %}>
+                    href="{% url 'seeking_ads_generic_create_view' %}">
                       Create an ads</a></li>
                   <li><a class="dropdown-item" 
-                    href={% url 'seeking_ads_generic_update_view' 2 %}>
+                    href="{% url 'seeking_ads_generic_update_view' 2 %}">
                     Update an ads</a></li>
                   <li><a class="dropdown-item" 
-                    href={% url 'seeking_ads_generic_delete_view' 3 %}>
+                    href="{% url 'seeking_ads_generic_delete_view' 3 %}">
                     Delete an ads</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="{% url "hello_world" %}">Octacat</a></li>
+                <li><a class="dropdown-item" href="{% url 'hello_world' %}">Octacat</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href={% url 'about' %}>About</a></li>
-                <li><a class="dropdown-item" href={% url 'credits' %}>Credits</a></li>
+                <li><a class="dropdown-item" href="{% url 'about' %}">About</a></li>
+                <li><a class="dropdown-item" href="{% url 'credits' %}">Credits</a></li>
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

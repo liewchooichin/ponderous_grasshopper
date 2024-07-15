@@ -23,6 +23,7 @@ index_data = {
     "urls": [
         ("bandgroups_list", "Band groups"),
         ("venues_list", "Venues"),
+        ("venue_add", "Add a venue"),
         ("news", "News"), 
         ("experiment_escape", "Experiment"),
     ],

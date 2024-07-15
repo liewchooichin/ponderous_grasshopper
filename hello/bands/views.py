@@ -1,5 +1,5 @@
 # hello/bands/views.py
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -212,7 +212,7 @@ def venue_edit(request, venue_id=0):
         If venue_id==0, add a room, else edit a room.
     """
     print(f"\t{request.user.email}")
-    print(f"\t{request.user}")
+    print(f"\t {request.user} ({request.user.id})")
 
     # Check is it an edit or add?
     # Check if the requested Venue object is part of the
@@ -251,9 +251,13 @@ def venue_edit(request, venue_id=0):
         # If Add venue, add the venue to the user's venues_operated
         # relationship.
         if form.is_valid():
-            venue = form.save()
+            venue = form.save(commit=False)
+            # Save the venue operator to the current user
+            #owner = venue.
             # Add the venue to the user's profile
             request.user.userprofile.venues_operated.add(venue)
+            request.user.userprofile.user.add(request.user)
+            return redirect("venues_list")
         
     # Was a GET, or Form was not valid
     data = {

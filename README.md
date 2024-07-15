@@ -1,6 +1,43 @@
 # My Notes
 
+
+
+
+
+
+## Using Developer Tools
+
+14 Jul
+
+Debugging the mysterious reason the `form.my_field.value` only shows the 
+first word. Using the Developer Tools to look at the html generated.
+
+`{% %}` or `{{ }}` need to be used with &quot;&quot;
+
+```
+<input 
+    type="text" 
+    class="form-control"
+    name="{{ form.name.name }}"
+    id="{{ form.name.id_for_label }}" 
+    value="{{ form.name.value }}"
+/>
+
+```
+
+Remember in **textarea**, the {{value}} is placed outside of the `<textarea>`.
+```
+<textarea 
+    class="form-control"
+    name="{{ form.description.name }}"
+    id="{{ form.description.id_for_label }}"
+    rows="5", cols="80">{{ form.description.value }}
+</textarea>
+```
+
 ## Toggle password show/hide
+
+14 Jul
 
 With the help of [an article from StackOverflow](https://stackoverflow.com/questions/25017403/django-show-password-checkbox), 
 I manage to get the password to show/hide.

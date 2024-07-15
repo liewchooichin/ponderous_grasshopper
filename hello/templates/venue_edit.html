@@ -3,6 +3,7 @@
     for file uploads to work.
 -->
 {% extends "base.html" %}
+{% load static  %}
 
 {% block title %}
     {{ block.super }} {{title}}
@@ -14,7 +15,7 @@
     <p>Add or edit a venue</p>
 
     <p>
-        {{ form }}
+        {# form #}
     </p>
      
     <form enctype="multipart/form" method="POST">
@@ -24,9 +25,11 @@
             class="form-label">
            {{ form.name.label }}
         </label>
-        <input type="text" class="form-control"
+        <input type="text" 
+            class="form-control"
+            name="{{ form.name.name }}"
             id="{{ form.name.id_for_label }}" 
-            value={{ form.name.value }}>
+            value="{{ form.name.value }}">
         <small>{{ form.name.help_text }}</small>
     </div>
 
@@ -35,10 +38,12 @@
             class="form-label">
             {{ form.description.label }}
         </label>
-        <input type="textarea" class="form-control"
+        <textarea 
+            class="form-control"
+            name="{{ form.description.name }}"
             id="{{ form.description.id_for_label }}"
-            value={{ form.description.value }}
-            rows="5", columns="100">
+            rows="5", cols="80">{{ form.description.value }}
+        </textarea>
         <small>{{ form.description.help_text }}</small>
     </div>
 
@@ -49,13 +54,17 @@
         </label>
         <input type="file" 
             class="form-control"
+            name="{{ form.picture.name }}"
             id="{{ form.picture.id_for_label}}"
             accept="image/png, image/jpeg">
+            <small>Current file: {{ form.picture.value }}</small>
+            <br>
             <small>{{ form.picture.help_text }}</small>
             <p>
             <img class="img-fluid"
-                src="form.picture.value" 
-                alt="picture of your venue">
+                src="{% static form.picture.value %}"
+                alt="picture of your venue"
+                width="200" height="200">
             </p>
 
     </div>
