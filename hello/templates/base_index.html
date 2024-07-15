@@ -1,0 +1,38 @@
+<!--Index of bands-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} Homepage
+{% endblock title %}
+
+{% block content %}
+
+<div>
+    <img src={% static "Octocat.png" %} 
+    alt="logo" 
+    width="200" height="200">
+    <h1>Welcome to RiffMates
+</div>
+
+<div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href={% url "news" %}>News</a>
+        </li>
+        <li class="list-group-item">
+            <a href={% url 'musicians-list' %}>Musicians</a>
+        </li>
+        <li class="list-group-item">
+            <a href={% url 'bandgroups_list' %}>Bands</a>
+        </li>
+        <li class="list-group-item">
+            <a href={% url 'ads_listing' %}>Classified ads</a>
+        </li>
+        <li class="list-group-item">
+            <a href={% url 'comment_form' %}>Comment form</a>
+        </li>
+    </ul>
+</div>
+
+{% endblock content %}

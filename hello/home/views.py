@@ -172,4 +172,4 @@ def index(request):
     # Use the global index_data. If there is anything that is specific
     # to the index page, then update the data (local variable) here.
     data = index_data
-    return render(request=request, template_name="base.html", context=data)
+    return render(request=request, template_name="base_index.html", context=data)
