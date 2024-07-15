@@ -3,10 +3,11 @@
 from django.urls import path
 
 from bands import views as band_views
+from home import views as home_views
 
 urlpatterns = [
     path(route="bands/",
-         view=band_views.band_index, name="band_index"),
+         view=home_views.index, name="index"),
     path(route="musician_detail/<int:musician_id>/", 
          view=band_views.musician_detail, name="musician_detail"),
     path(route="musicians-list/", 

@@ -6,8 +6,7 @@
     <h1>Musicians</h1>
 
     <p>
-        The band group a musican belongs to is not listed correctly.
-        Will resolve this.
+        List of musicians and the band groups they belong to.
     </p>
 
     <p>
@@ -17,10 +16,22 @@
             <li class="list-group-item">
                 <a href="{% url "musician_detail" m.id %}">
                     {{ m.first_name }} {{ m.last_name }} 
-                    {% for b in bandgroup %}
-                        {{ b }}
-                    {% endfor %}
                 </a>
+                    <br>
+                    Bands:
+                    <ul class="list-group">
+                    {% if m.bandgroup_set.all|length != 0 %}
+                    {% for item in m.bandgroup_set.all %}
+                        <li class="list-group-item">
+                            <a href="{% url 'bandgroup_detail' item.id %}">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                    {% endfor %%}
+                    {% else %}
+                    <li class="list-group-item">None</li>
+                    {% endif %}
+                    </ul>
             </li>
             {% empty %}
             <li class="list-group-item">No musicians in the database</li>
