@@ -1,0 +1,15 @@
+<!-- Produce using Gemini -->
+<!--his code creates a hexagon with a gradient fill that goes from yellow to red. You can change the colors in the stop-color attributes of the <stop> elements within the <linearGradient> definition. You can also adjust the size of the hexagon by changing the width and height attributes of the <svg> element.-->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="300">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color: #FFC107; stop-opacity: 1" />
+      <stop offset="20%" style="stop-color: #FF9800; stop-opacity: 1" />
+      <stop offset="40%" style="stop-color: #FF5722; stop-opacity: 1" />
+      <stop offset="60%" style="stop-color: #F44336; stop-opacity: 1" />
+      <stop offset="80%" style="stop-color: #D73027; stop-opacity: 1" />
+    </linearGradient>
+  </defs>
+  <polygon points="100,0 173.2,86.6 173.2,173.2 100,259.8 26.8,173.2 26.8,86.6" style="fill: url(#grad1); stroke: #000; stroke-width: 5px;" />
+</svg>

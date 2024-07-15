@@ -61,7 +61,10 @@ class Venue(models.Model):
     """the Room is CASCADE."""
     id = models.SmallAutoField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name="Venue")
-
+    # The description can be NULL in the database and empty in the Django Admin
+    description = models.TextField(max_length=300, blank=True, null=True)
+    picture = models.ImageField(blank=True, null=True)
+    
     # Meta
     class Meta:
         ordering =["name"]

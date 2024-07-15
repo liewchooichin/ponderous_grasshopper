@@ -181,8 +181,11 @@ STATICFILES_DIRS = [
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# MEDIA_ROOT: Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
+# Default MEDIA_ROOT
+#MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = BASE_DIR.parent / "outside_file_holder/RiffMates/uploads/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

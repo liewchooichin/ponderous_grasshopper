@@ -1,5 +1,46 @@
 # My Notes
 
+## Toggle password show/hide
+
+With the help of [an article from StackOverflow](https://stackoverflow.com/questions/25017403/django-show-password-checkbox), 
+I manage to get the password to show/hide.
+
+The `document.querySelector("#id_password")` is the Django password id field.
+
+```
+    <!--In the /templates/registration/login.html, add a checkbox.-->
+
+    <input type="checkbox" id="toggle_password" 
+    name="toggle_password">
+    <label for="toggle_password">Show password</label>
+```
+
+```
+/* 
+In the /static/main.js
+
+Useful reference:
+https://stackoverflow.com/questions/25017403/django-show-password-checkbox
+Important info: 
+    - Django password id field: document.querySelector("#id_password")
+*/
+
+pwd_box = document.querySelector("#toggle_password")
+pwd_field = document.querySelector("#id_password")
+
+pwd_box.addEventListener("click", listener=toggle_password)
+
+function toggle_password()
+{
+    console.log("Toggle pasword");
+    if(pwd_box.checked)
+        pwd_field.type='text';
+    else
+        pwd_field.type='password';
+}
+
+```
+
 
 ## Get the current `request.user`
 

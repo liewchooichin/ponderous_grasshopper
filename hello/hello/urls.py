@@ -54,6 +54,9 @@ urlpatterns = [
     path("content/", include("content.urls")),
 ]
 
+
+# Only serve uploaded files this way if you are in DEBUG=True mode.
+# Add the new route returned by static() into urlpatterns.
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
