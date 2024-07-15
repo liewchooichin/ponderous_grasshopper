@@ -256,7 +256,7 @@ def venue_edit(request, venue_id=0):
             #owner = venue.
             # Add the venue to the user's profile
             request.user.userprofile.venues_operated.add(venue)
-            request.user.userprofile.user.add(request.user)
+            request.user.userprofile.user = request.user
             return redirect("venues_list")
         
     # Was a GET, or Form was not valid
