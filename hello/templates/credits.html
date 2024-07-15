@@ -1,0 +1,31 @@
+<!--Credits-->
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <h1>Credits</h1>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Octocat</h5>
+            <p class="card-text">The beautiful Octocat comes 
+                from the Codespaces Django template.
+            </p>
+            <a href="https://github.com/codespaces/templates" 
+            class="btn btn-primary">Codespaces templates</a>
+        </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Tutorial</h5>
+            <p class="card-text">The tutorial mainly comes from the book <i>Django in Action</i> by Christopher Trudeau.</p>
+            <a href="https://www.manning.com/books/django-in-action" class="btn btn-primary">Check it out at Manning Books</a>
+        </div>
+    </div>
+
+
+{% endblock content %}

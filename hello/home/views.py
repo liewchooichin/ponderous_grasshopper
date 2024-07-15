@@ -108,13 +108,21 @@ def my_password_reset_view(request):
 # Definition of views
 def credits(request):
     """Return the credits message"""
-    content = "Credits: Django in Action"
-    return HttpResponse(content=content, content_type="text/plain")
+    #content = "Credits: Django in Action"
+    #return HttpResponse(content=content, content_type="text/plain")
+    data = index_data
+    data.update({
+        'title': 'Credits',
+    })
+    return render(request=request,
+                  template_name="credits.html",
+                  context=data)
     
 
 def about(request):
     """Return the about message"""
-    content ="About this project"
+    content ="About this project. \
+        This is the simplest possible view in Django."
     return HttpResponse(content=content, content_type="text/plain")
 
 def version(request):
