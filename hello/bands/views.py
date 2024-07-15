@@ -10,7 +10,7 @@ from django.http import Http404
 from django.views import generic
 
 from bands.models import Musician, Venue, Room, BandGroup
-from bands.forms import RoomForm
+from bands.forms import RoomForm, VenueForm
 from home import views, page_util
 
 # Pagination utilities
@@ -205,5 +205,64 @@ def musician_restricted(request, musician_id):
         'content': content,
     }
     return render(request, "restricted_page.html", data)
+
+#login_required
+def venue_edit(request, venue_id=0):
+    """"Add or edit a venue according to the venue_id.
+        If venue_id==0, add a room, else edit a room.
+    """
+    print(f"\t{request.user.email}")
+    print(f"\t{request.user}")
+
+    # Check is it an edit or add?
+    # Check if the requested Venue object is part of the
+    # user's venues_operated relationship. If not, raise
+    # a 404 error.
+    if venue_id != 0:
+        # Fetch the requested Venue object
+        current_venue = get_object_or_404(Venue, id=venue_id)
+        print(f"\t{current_venue}")
+        venues_operated_by_current_user = \
+            request.user.userprofile.venues_operated.filter(
+                id=venue_id
+            )
+        
+        if not venues_operated_by_current_user.exists():
+            raise Http404("A user can only edit controlled venues.")
+    
+    # GET
+    if request.method == "GET":
+        if venue_id == 0:
+            form = VenueForm()
+        else:
+            form = VenueForm(instance=current_venue)
+    # POST
+    elif request.method == "POST":
+        if venue_id == 0:
+            # Add a venue: create a new empty Venue object
+            # associated with the form.
+            new_venue = Venue.objects.create()
+        
+        # include request.FILES in form creation to get
+        # both the form's fields and the uploaded files.
+        form = VenueForm(data=request.POST, files=request.FILES,
+                         instance=new_venue)
+
+        # If Add venue, add the venue to the user's venues_operated
+        # relationship.
+        if form.is_valid():
+            added_venue = form.save()
+            # Add the venue to the user's profile
+            request.user.userprofile.venues_operated.add(added_venue)
+        
+    # Was a GET, or Form was not valid
+    data = {
+        'title': 'Edit or add venue',
+        'form': form,
+    }
+    
+    return render(request=request, 
+                  template_name="venue_edit.html", context=data)
+
 
 

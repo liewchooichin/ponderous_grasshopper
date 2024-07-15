@@ -60,10 +60,17 @@ class Venue(models.Model):
     """make sense to keep the associated rooms, so the on_delete value for""" 
     """the Room is CASCADE."""
     id = models.SmallAutoField(primary_key=True)
-    name = models.CharField(max_length=20, verbose_name="Venue")
+    name = models.CharField(max_length=100, verbose_name="Venue",
+                            help_text="Name of venue, max characters 20")
     # The description can be NULL in the database and empty in the Django Admin
-    description = models.TextField(max_length=300, blank=True, null=True)
-    picture = models.ImageField(blank=True, null=True)
+    description = models.TextField(max_length=300, 
+        verbose_name="Description", 
+        default="Practice rooms and performance venues",
+        help_text="Max length 300 characters")
+    picture = models.ImageField(blank=True, null=True,
+            verbose_name="Picture",
+            help_text="Uplaod a picture of your venue, \
+            in JPG or PNG format only.")
     
     # Meta
     class Meta:

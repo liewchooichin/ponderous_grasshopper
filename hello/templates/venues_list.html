@@ -6,7 +6,10 @@
 
     <ul class="list-group">
         {% for venue in venues %}
-        <li class="list-group-item">{{ venue.name}}</li>
+        <li class="list-group-item">
+            <a href={% url 'venue_edit' venue.id %}>{{ venue.name }}</a>
+        </li>
+        
         <ul class="list-group">
             {% for room in venue.room_set.all %}
                 <li class="list-group-item">
