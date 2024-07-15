@@ -220,8 +220,8 @@ def venue_edit(request, venue_id=0):
     # a 404 error.
     if venue_id != 0:
         # Fetch the requested Venue object
-        current_venue = get_object_or_404(Venue, id=venue_id)
-        print(f"\t{current_venue}")
+        venue = get_object_or_404(Venue, id=venue_id)
+        print(f"\t{venue}")
         venues_operated_by_current_user = \
             request.user.userprofile.venues_operated.filter(
                 id=venue_id
@@ -235,25 +235,25 @@ def venue_edit(request, venue_id=0):
         if venue_id == 0:
             form = VenueForm()
         else:
-            form = VenueForm(instance=current_venue)
+            form = VenueForm(instance=venue)
     # POST
     elif request.method == "POST":
         if venue_id == 0:
             # Add a venue: create a new empty Venue object
             # associated with the form.
-            new_venue = Venue.objects.create()
+            venue = Venue.objects.create()
         
         # include request.FILES in form creation to get
         # both the form's fields and the uploaded files.
         form = VenueForm(data=request.POST, files=request.FILES,
-                         instance=new_venue)
+                         instance=venue)
 
         # If Add venue, add the venue to the user's venues_operated
         # relationship.
         if form.is_valid():
-            added_venue = form.save()
+            venue = form.save()
             # Add the venue to the user's profile
-            request.user.userprofile.venues_operated.add(added_venue)
+            request.user.userprofile.venues_operated.add(venue)
         
     # Was a GET, or Form was not valid
     data = {
