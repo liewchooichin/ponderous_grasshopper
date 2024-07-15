@@ -161,7 +161,8 @@ def put_an_ads(request, ad_id=0):
             # from the user who login to the site.
             ad.owner = request.user
             ad.save()
-            return redirect("ads_listing")
+            #return redirect("ads_listing")
+            return redirect("user_edit_ads")
     
     # GET or form is not valid
     data = {

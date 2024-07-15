@@ -12,10 +12,9 @@ gets included in the template’s context dictionary. That means anything in the
 
     <!--This section is for bands-->
     <p>
-        <h2>Bands looking for musicians</h2>
+        <h2>Bands: We need a musician</h2>
         {% for item in ad %}
-            {{ item.id }} {{item.owner}}
-            {% if item.owner == request.user %}
+            {% if item.seeking == "M" %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -31,19 +30,22 @@ gets included in the template’s context dictionary. That means anything in the
                 </div>
             </div>
             {% endif %}
+            {% empty %}
+                None
         {% endfor %}
     </p>
 
     <!--This section is for musicians-->
     <p>
-        <h2>Bands looking for musicians</h2>
+        <h2>Musicians: Which band can I join?</h2>
         {% for item in ad %}
-            {{ item.id }} {{item.owner}}
-            {% if item.owner == request.user %}
+            {% if item.seeking == "B" %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">
-                        {{item.id}} {{ item.musician.name }} 
+                        {{item.id}} 
+                        {{ item.musician.first_name }} 
+                        {{ item.musician.last_name }}
                     </h5>
                     <p class="card-text">
                         {{ item.create_date }}

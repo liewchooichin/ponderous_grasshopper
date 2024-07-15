@@ -95,23 +95,6 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href={% url 'about' %}>About</a></li>
                 <li><a class="dropdown-item" href={% url 'credits' %}>Credits</a></li>
-                <!--login and logout-->
-                <li>
-                  {% if user.is_authenticated %}
-                  <form id="logout-form" method="post"
-                    action={% url "logout" %}>
-                    {% csrf_token %}
-                    <button type="submit">Logout</button>
-                  </form>
-                  {% else %}
-                    <a href={% url "login" %}>Login</a>
-                  {% endif %}
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
