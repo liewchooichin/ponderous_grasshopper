@@ -1,19 +1,11 @@
 # My Notes
 
 
-
-
-## File or image file upload, displaying image
-
-16 Jul
-
-The form must be **`multipart/form-data`**.
-
-```
-<form enctype="multipart/form-data" method="POST">
-```
+## Displaying image
 
 Image can be displayed by specifying the **MEDIA_URL**:
+
+When used in a **form**: `"/media/{{form.picture.value}}/"`
 ```
 <img 
     class="img-fluid"
@@ -21,6 +13,26 @@ Image can be displayed by specifying the **MEDIA_URL**:
     alt="picture of your venue"
     width="200" height="200"
 >
+```
+
+When used in a **queryset**: `item.picture.url`
+
+```
+<img 
+    src="{{ item.picture.url }}"
+    alt="{{ item.name }}"
+    width="200" height="200"
+>
+```
+
+## File or image file upload
+
+16 Jul
+
+The form must be **`multipart/form-data`**.
+
+```
+<form enctype="multipart/form-data" method="POST">
 ```
 
 ## Using Developer Tools
