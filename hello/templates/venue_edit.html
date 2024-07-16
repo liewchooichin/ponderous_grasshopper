@@ -18,8 +18,8 @@
         {# form #}
     </p>
      
-    <form enctype="multipart/form" method="POST">
-        {% csrf_token %}
+    <form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
     <div class="mb-3">
         <label for="{{ form.name.id_for_label }}"
             class="form-label">
@@ -56,20 +56,21 @@
             class="form-control"
             name="{{ form.picture.name }}"
             id="{{ form.picture.id_for_label}}"
-            accept="image/png, image/jpeg">
+            accept="image/png, image/jpeg"
+            size="500000">
             <small>Current file: {{ form.picture.value }}</small>
             <br>
             <small>{{ form.picture.help_text }}</small>
             <p>
             <img class="img-fluid"
-                src="{# static form.picture.value #}"
+                src="/media/{{form.picture.value}}/"
                 alt="picture of your venue"
                 width="200" height="200">
             </p>
 
     </div>
 
-    <button type="submit" class="btn btn-dark">Submit</button>
+    <button type="submit" class="btn btn-dark">Save</button>
     </form>
 
 

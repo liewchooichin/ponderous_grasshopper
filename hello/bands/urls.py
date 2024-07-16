@@ -30,6 +30,7 @@ urlpatterns = [
           view=band_views.venue_edit, name="venue_add"),
      path(route="venue_edit/<int:venue_id>/",
           view=band_views.venue_edit, name="venue_edit"),
-
+     path(route="user_profile/",
+          view=band_views.display_userprofile, name="user_profile"),
 ]
 

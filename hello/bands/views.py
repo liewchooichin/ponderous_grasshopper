@@ -131,7 +131,7 @@ def has_venue(user):
         return False
 
 #@user_passes_test(has_venue)
-@login_required
+#@login_required
 def venues_list(request):
     """List of all venues in the site"""
     all_venues = Venue.objects.all().order_by("name")
@@ -206,7 +206,7 @@ def musician_restricted(request, musician_id):
     }
     return render(request, "restricted_page.html", data)
 
-#login_required
+@login_required
 def venue_edit(request, venue_id=0):
     """"Add or edit a venue according to the venue_id.
         If venue_id==0, add a room, else edit a room.
@@ -221,6 +221,7 @@ def venue_edit(request, venue_id=0):
     if venue_id != 0:
         # Fetch the requested Venue object
         venue = get_object_or_404(Venue, id=venue_id)
+        print(f"\tRetrieving ... {venue}")
         print(f"\t{venue}")
         venues_operated_by_current_user = \
             request.user.userprofile.venues_operated.filter(
@@ -247,7 +248,7 @@ def venue_edit(request, venue_id=0):
         # both the form's fields and the uploaded files.
         form = VenueForm(data=request.POST, files=request.FILES,
                          instance=venue)
-
+        
         # If Add venue, add the venue to the user's venues_operated
         # relationship.
         if form.is_valid():
@@ -257,16 +258,35 @@ def venue_edit(request, venue_id=0):
             # Add the venue to the user's profile
             request.user.userprofile.venues_operated.add(venue)
             request.user.userprofile.user = request.user
+            venue.save()
+            form.save_m2m()
+            print(f"\tFiles: {request.FILES}")
+            print(f"\tSaving .... {venue}")
             return redirect("venues_list")
         
     # Was a GET, or Form was not valid
-    data = {
+    data.update({
         'title': 'Edit or add venue',
         'form': form,
-    }
+    })
     
     return render(request=request, 
                   template_name="venue_edit.html", context=data)
 
 
+# Display user profile
+@login_required
+def display_userprofile(request):
+    """Display profile of a user"""
+    # getattr of a user
+    userprofile = getattr(request.user, "userprofile", None)
+    print(userprofile.user)
+    data.update({
+        "title": "User Profile",
+        "userprofile": (userprofile if userprofile else "None"),
+    })
 
+    return render(request=request,
+        template_name="user_profile.html",
+        context=data
+    )

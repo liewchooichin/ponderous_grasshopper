@@ -14,6 +14,8 @@ from decouple import config
 from content.forms import CommentForm, SeekingAdForm
 from content.models import MusicianBandChoice, SeekingAd
 
+from home.views import index_data
+data = index_data
 
 def comment_form(request):
     """Send users' comment to an admin's email"""
@@ -208,3 +210,5 @@ def seekingad_delete_successful(request):
     return render(request=request, 
                   template_name="seekingad_delete_successful.html",
                   context=data)
+
+

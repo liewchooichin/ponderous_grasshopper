@@ -68,9 +68,10 @@ class Venue(models.Model):
         default="Practice rooms and performance venues",
         help_text="Max length 300 characters")
     picture = models.ImageField(blank=True, null=True,
+            max_length=500000,
             verbose_name="Picture",
             help_text="Uplaod a picture of your venue, \
-            in JPG or PNG format only.")
+            in JPG or PNG format only. Not more than 500KB")
     
     # Meta
     class Meta:

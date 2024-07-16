@@ -3,7 +3,25 @@
 
 
 
+## File or image file upload, displaying image
 
+16 Jul
+
+The form must be **`multipart/form-data`**.
+
+```
+<form enctype="multipart/form-data" method="POST">
+```
+
+Image can be displayed by specifying the **MEDIA_URL**:
+```
+<img 
+    class="img-fluid"
+    src="/media/{{form.picture.value}}/"
+    alt="picture of your venue"
+    width="200" height="200"
+>
+```
 
 ## Using Developer Tools
 
