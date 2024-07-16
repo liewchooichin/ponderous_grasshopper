@@ -1,5 +1,5 @@
 # hello/bands/views.py
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -10,7 +10,7 @@ from django.http import Http404
 from django.views import generic
 
 from bands.models import Musician, Venue, Room, BandGroup
-from bands.forms import RoomForm
+from bands.forms import RoomForm, VenueForm
 from home import views, page_util
 
 # Pagination utilities
@@ -131,7 +131,7 @@ def has_venue(user):
         return False
 
 #@user_passes_test(has_venue)
-@login_required
+#@login_required
 def venues_list(request):
     """List of all venues in the site"""
     all_venues = Venue.objects.all().order_by("name")
@@ -206,4 +206,87 @@ def musician_restricted(request, musician_id):
     }
     return render(request, "restricted_page.html", data)
 
+@login_required
+def venue_edit(request, venue_id=0):
+    """"Add or edit a venue according to the venue_id.
+        If venue_id==0, add a room, else edit a room.
+    """
+    print(f"\t{request.user.email}")
+    print(f"\t {request.user} ({request.user.id})")
 
+    # Check is it an edit or add?
+    # Check if the requested Venue object is part of the
+    # user's venues_operated relationship. If not, raise
+    # a 404 error.
+    if venue_id != 0:
+        # Fetch the requested Venue object
+        venue = get_object_or_404(Venue, id=venue_id)
+        print(f"\tRetrieving ... {venue}")
+        print(f"\t{venue}")
+        venues_operated_by_current_user = \
+            request.user.userprofile.venues_operated.filter(
+                id=venue_id
+            )
+        
+        if not venues_operated_by_current_user.exists():
+            raise Http404("A user can only edit controlled venues.")
+    
+    # GET
+    if request.method == "GET":
+        if venue_id == 0:
+            form = VenueForm()
+        else:
+            form = VenueForm(instance=venue)
+    # POST
+    elif request.method == "POST":
+        if venue_id == 0:
+            # Add a venue: create a new empty Venue object
+            # associated with the form.
+            venue = Venue.objects.create()
+        
+        # include request.FILES in form creation to get
+        # both the form's fields and the uploaded files.
+        form = VenueForm(data=request.POST, files=request.FILES,
+                         instance=venue)
+        
+        # If Add venue, add the venue to the user's venues_operated
+        # relationship.
+        if form.is_valid():
+            venue = form.save(commit=False)
+            # Save the venue operator to the current user
+            #owner = venue.
+            # Add the venue to the user's profile
+            request.user.userprofile.venues_operated.add(venue)
+            request.user.userprofile.user = request.user
+            venue.save()
+            form.save_m2m()
+            print(f"\tFiles: {request.FILES}")
+            print(f"\tSaving .... {venue}")
+            return redirect("venues_list")
+        
+    # Was a GET, or Form was not valid
+    data.update({
+        'title': 'Edit or add venue',
+        'form': form,
+    })
+    
+    return render(request=request, 
+                  template_name="venue_edit.html", context=data)
+
+
+# Display user profile
+@login_required
+def display_userprofile(request):
+    """Display profile of a user"""
+    # getattr of a user
+    userprofile = getattr(request.user, "userprofile", None)
+    print(userprofile.user)
+    data.update({
+        "title": "User Profile",
+        "userprofile": (userprofile if userprofile else "None"),
+    })
+
+    return render(request=request,
+        template_name="user_profile.html",
+        context=data
+    )

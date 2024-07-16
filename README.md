@@ -1,6 +1,102 @@
 # My Notes
 
 
+
+
+## File or image file upload, displaying image
+
+16 Jul
+
+The form must be **`multipart/form-data`**.
+
+```
+<form enctype="multipart/form-data" method="POST">
+```
+
+Image can be displayed by specifying the **MEDIA_URL**:
+```
+<img 
+    class="img-fluid"
+    src="/media/{{form.picture.value}}/"
+    alt="picture of your venue"
+    width="200" height="200"
+>
+```
+
+## Using Developer Tools
+
+14 Jul
+
+Debugging the mysterious reason the `form.my_field.value` only shows the 
+first word. Using the Developer Tools to look at the html generated.
+
+`{% %}` or `{{ }}` need to be used with &quot;&quot;
+
+```
+<input 
+    type="text" 
+    class="form-control"
+    name="{{ form.name.name }}"
+    id="{{ form.name.id_for_label }}" 
+    value="{{ form.name.value }}"
+/>
+
+```
+
+Remember in **textarea**, the {{value}} is placed outside of the `<textarea>`.
+```
+<textarea 
+    class="form-control"
+    name="{{ form.description.name }}"
+    id="{{ form.description.id_for_label }}"
+    rows="5", cols="80">{{ form.description.value }}
+</textarea>
+```
+
+## Toggle password show/hide
+
+14 Jul
+
+With the help of [an article from StackOverflow](https://stackoverflow.com/questions/25017403/django-show-password-checkbox), 
+I manage to get the password to show/hide.
+
+The `document.querySelector("#id_password")` is the Django password id field.
+
+```
+    <!--In the /templates/registration/login.html, add a checkbox.-->
+
+    <input type="checkbox" id="toggle_password" 
+    name="toggle_password">
+    <label for="toggle_password">Show password</label>
+```
+
+```
+/* 
+In the /static/main.js
+
+Useful reference:
+https://stackoverflow.com/questions/25017403/django-show-password-checkbox
+Important info: 
+    - Django password id field: document.querySelector("#id_password")
+*/
+
+pwd_box = document.querySelector("#toggle_password")
+pwd_field = document.querySelector("#id_password")
+
+pwd_box.addEventListener("click", listener=toggle_password)
+
+function toggle_password()
+{
+    console.log("Toggle pasword");
+    if(pwd_box.checked)
+        pwd_field.type='text';
+    else
+        pwd_field.type='password';
+}
+
+```
+
+
 ## Get the current `request.user`
 
 14 Jul, Sun

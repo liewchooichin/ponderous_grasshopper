@@ -3,11 +3,38 @@
 
 {% block content %}
     <h1>List of venues</h1>
-
+    
     <ul class="list-group">
+        <!--Get every venue-->
         {% for venue in venues %}
-        <li class="list-group-item">{{ venue.name}}</li>
+        <li class="list-group-item">
+            <a href={% url 'venue_edit' venue.id %}>{{ venue.name }}</a>
+            <!--Get the owner of the venue-->
+            <!--Only show owner to authenticated users-->
+            {% if user.is_authenticated %}
+                <br>Owned by: 
+                {% for owner in venue.userprofile_set.all %}
+                    {{owner.user.username}} ({{ owner.user.id }})
+                {% empty %}
+                    None
+                {% endfor %}
+            {% endif %}
+        </li>
+        <li class="list-group-item">
+            {% if venue.description %}
+                {{ venue.description }}
+            {% endif %}
+        </li>
+        <li class="list-group-item">
+            {% if venue.picture %}
+                <img src="{{ venue.picture.url }}"
+                 width="200" height="200"
+                 alt="{{venue.name}}">
+            {% endif %}
+        </li>
+        
         <ul class="list-group">
+            <!--Get the rooms of the venue-->
             {% for room in venue.room_set.all %}
                 <li class="list-group-item">
                     <a href={% url 'room_detail' room.id %}>

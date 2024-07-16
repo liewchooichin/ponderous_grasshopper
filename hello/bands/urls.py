@@ -4,6 +4,8 @@ from django.urls import path
 
 from bands import views as band_views
 from home import views as home_views
+from bands.forms import VenueForm, RoomForm
+
 
 urlpatterns = [
     path(route="bands/",
@@ -24,5 +26,11 @@ urlpatterns = [
           view=band_views.restricted_page, name="restricted_page"),
      path(route="musician_restricted/<int:musician_id>/", 
           view=band_views.musician_restricted, name="musician_restricted"),
+     path(route="venue_add/0/",
+          view=band_views.venue_edit, name="venue_add"),
+     path(route="venue_edit/<int:venue_id>/",
+          view=band_views.venue_edit, name="venue_edit"),
+     path(route="user_profile/",
+          view=band_views.display_userprofile, name="user_profile"),
 ]
 

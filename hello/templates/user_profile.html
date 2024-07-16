@@ -1,0 +1,57 @@
+<!--Display user profile-->
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <h1>User profile</h1>
+
+{% if user.is_authenticated %}
+   <h2>Personal details</h2>
+    <ul class="list-group">
+        <li class="list-group-item">ID: {{ userprofile.id}}</li>
+        <li class="list-group-item">Username: {{ userprofile.user}}</li>
+        <li class="list-group-item">
+            Name: {{ userprofile.user.first_name}} {{ userprofile.user.last_name}}
+        </li>
+        <li class="list-group-item">Email: {{ userprofile.user.email}}</li>
+    </ul>
+
+    <h2>Musicians</h2>
+    <ul class="list-group">
+        <!--Get the musicians of this user-->
+        {% for item in userprofile.musician_profiles.all %}
+            <li class="list-group-item">
+                Name: {{ item.first_name }} {{ item.last_name }}
+                <br>
+                Birth date:{{ item.birth }}
+                <br>
+                Style: {{ item.style }}
+            </li>
+        {% empty %}
+            <li class="list-group-item">No musician profiles</li>
+        {% endfor %}
+
+        <!--Get the venues operated by this user-->
+        <h2>Venues</h2>
+        {% for item in userprofile.venues_operated.all %}
+        <li class="list-group-item">
+            Venue name: {{ item.name }} 
+            <br>
+            Description:{{ item.description }}
+            <br>
+            Picture: <img src="{{ item.picture.url }}"
+                alt="{{ item.name }}"
+                width="200" height="200"
+            >
+        </li>
+    {% empty %}
+        <li class="list-group-item">No venues operated</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Only registered user has a profile.</p>
+{% endif %}
+{% endblock content %}

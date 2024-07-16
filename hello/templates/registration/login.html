@@ -14,8 +14,15 @@
 
     {{ form.as_p }}
 
+    <p>
+        <input type="checkbox" id="toggle_password" 
+        name="toggle_password">
+        <label for="toggle_password">Show password</label>
+    </p>
+
     <button class="btn btn-dark" type="submit">
         Login</button>
+    </p>
     </form>
 
 {% endblock content %}
