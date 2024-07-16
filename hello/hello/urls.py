@@ -25,6 +25,12 @@ from hello.core import views as hello_views
 # from tutorial
 from home import views as home_views
 
+# The homepage only needs route=""
+# Your URL pattern '/' [name='index'] has a route beginning 
+# with a '/'. Remove this slash as it is unnecessary. If this
+# pattern is targeted in an include(), ensure the include() pattern
+# has a trailing '/'.
+
 # hello/hello/urls.py
 urlpatterns = [
     # added by the github template

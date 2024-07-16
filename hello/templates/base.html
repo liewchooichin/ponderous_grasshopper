@@ -27,24 +27,36 @@
             <div>
               {% if user.is_authenticated %}                
               <p class="text-white bg-dark">{{ user.username }}</p>
+              <p>
               <form id="password-change-form" method="POST"
                 action={% url 'password_change' %}>
                 {% csrf_token %}
-                <button type="submit">Change password</button>
+                <button type="submit" class="btn btn-light">Change password</button>
               </form>
+              </p>
+
+              <p>
               <form id="logout-form" method="POST" 
                 action={% url 'logout' %} >
                 {% csrf_token %}
-                <button type="submit">Logout</button>
+                <button type="submit" class="btn btn-light">Logout</button>
               </form>
+             </p>
               {% else %}
-                <form id="login-form" method="POST"
-                action={% url 'login' %}>
-                {% csrf_token %}
-                <button type="submit">Login</button>
                 <p>
-                  <a href={% url "login" %}>Login</a>
-                  <a href={% url "password_reset" %}>Forget password</a>
+                <form id="login-form" method="POST"
+                  action={% url 'login' %}>
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-light">Login</button>
+                </form>
+                </p>
+
+                <p>
+                  <form id="password-reset-form" method="POST"
+                  action={% url 'password_reset' %}>
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-light">Forget password</button>
+                </form>
                 </p>
               {% endif %}
             </div>

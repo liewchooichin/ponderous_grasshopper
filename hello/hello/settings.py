@@ -209,7 +209,7 @@ STORAGES = {
 # Where to redirect to when the user logs out.
 # Account management
 LOGIN_REDIRECT_URL = '/bands/bands/'
-LOGOUT_REDIRECT_URL = '/bands/bands/'
+#LOGOUT_REDIRECT_URL = '/accounts/logout/'
 # For resetting password
 # With Django default email backed
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

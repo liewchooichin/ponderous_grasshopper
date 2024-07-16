@@ -1,5 +1,17 @@
 # My Notes
 
+## Reference
+
+The tutorial that I am following here draws from:
+- [Django in Action](https://www.manning.com/books/django-in-action) by Christopher Trudeau.
+- [MDN Django web framework](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django)
+- [Django Documentation](https://docs.djangoproject.com/en/5.0/), especially the [Topic Guides(https://docs.djangoproject.com/en/5.0/topics/)
+
+
+## New notes here
+
+
+
 
 ## Displaying image
 
