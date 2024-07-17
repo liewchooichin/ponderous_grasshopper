@@ -142,7 +142,7 @@ def news(request):
     data = index_data
     data.update({
         'news': [
-            (today, 'RiffMates now has a base page with Bootstrap.'),
+            (today, 'RiffMates now has a new look with Bootstrap.'),
             (before1, 'RiffMates has its first views and templates.'),
             (before2, 'RiffMates has just created its first Django app.'),
             (before3, 'Following a quick run through tutorial of Django in MDN.'),

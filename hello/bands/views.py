@@ -63,7 +63,7 @@ def musicians_list(request):
         'musicians': page.object_list,
         'page': page,
     })
-    return render(request=request, template_name="musicians-list.html", context=data)
+    return render(request=request, template_name="musicians_list.html", context=data)
 
 
 def bandgroup_detail(request, bandgroup_id):

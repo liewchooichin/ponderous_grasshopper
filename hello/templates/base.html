@@ -22,7 +22,7 @@
     <!--Navigation bar from the sample-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href={% url "index" %}>RiffMates</a>
+        <a class="navbar-brand" href="{% url 'index' %}">RiffMates</a>
             <!--login logout button-->
             <div>
               {% if user.is_authenticated %}                
@@ -67,29 +67,47 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href={% url "index" %}>
+              <a class="nav-link active" aria-current="page" 
+              href="{% url 'index' %}">
                 Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href={% url "musicians-list" %}>Musicians</a>
+              <a class="nav-link" 
+              href="{% url 'musicians_list' %}">Musicians</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href={% url "user_profile" %}>
+              <a class="nav-link" href="{% url 'user_profile' %}">
                 User profile</a>
             </li>
+
+            <!--Start of dropdown-->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
+                Main
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <!--Navigation items-->
-                {% for url_page in urls %}
-                <li><a class="dropdown-item" href="{% url url_page.0 %}">
-                    {{ url_page.1 }}</a></li>
-                {% endfor %}
-              
-                <li><a class="dropdown-item" href="{% url 'comment_form' %}">Comment</a></li>
-                <li><a class="dropdown-item" href="{% url 'ads_listing' %}">Ads listing</a></li>
+                  <!--General list for everybody-->                
+                  <li><a class="dropdown-item" 
+                    href="{% url 'bandgroups_list' %}">
+                  Bands</a></li>
+                  <li><a class="dropdown-item" 
+                    href="{% url 'musicians_list' %}">
+                  Musicians</a></li>
+                  <li><a class="dropdown-item" 
+                    href="{% url 'ads_listing' %}">
+                    Classified ads</a></li>                  
+                  <li><a class="dropdown-item" 
+                    href="{% url 'comment_form' %}">
+                    Comment</a></li>
+                  </ul>
+              </li>
+                <!--Start of dropdown-->
+                <!--Member's area-->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Members' area
+                  </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'put_an_ads' %}">Put an ads</a></li>
                 <li><a class="dropdown-item" href="{% url 'user_edit_ads' %}">User edit ads</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -102,11 +120,17 @@
                   <li><a class="dropdown-item" 
                     href="{% url 'seeking_ads_generic_delete_view' 3 %}">
                     Delete an ads</a></li>
+                  </ul>
+                  </li>
+                <!--Other general area-->
+
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="{% url 'hello_world' %}">Octacat</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="{% url 'about' %}">About</a></li>
-                <li><a class="dropdown-item" href="{% url 'credits' %}">Credits</a></li>
+                <li class="nav-item"><a class="nav-link" 
+                  href="{% url 'news' %}">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">
+                  About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'credits' %}">
+                  Credits</a></li>
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

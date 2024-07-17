@@ -3,37 +3,22 @@
 
 {% block content %}
     <h1>RiffMates News</h1>
-    <h2>Using Bootstrap <code>class=&quot;list-group active&quot;</code></h2>
+ 
     <p>
     <ul class="list-group">
         {% for item in news %}
         <!--First item-->
-        {% if forloop.first %}
-            <li class="list-group-item active">
-                {{ item.0 }}: {{ item.1 }}
-            </li>
-        {% endif %}
-        <!--Other item-->
         <li class="list-group-item">
             {{ item.0 }}: {{ item.1 }}
+        </li>
+        {% empty %}
+        <li class="list-group-item">
+            No news is good news.
         </li>
         {% endfor %}
     </ul>
     </p>
 
-    <h2>Using Django tag <code>{{ "{% cycle %}" | safe}}</code></h2>
-    <p>The Bootstrap <code>class=table</code> will override the alternate color settings.</p>
-    <div class="table-responsive">
-    <!--The Bootstrap class=table will override the alternate color settings.-->
-    <!--table class="table"-->
-    <table>
-        {% for item in news %}
-        <tr class="{% cycle 'row1' 'row2' as rowcolors %}">
-            <td class="{{ rowcolors }}">{{ item.0 | date:"d-M-Y" }}</td>
-            <td class="{{ rowcolors }}">{{ item.1 }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    </div>
+
 
 {% endblock content %}
