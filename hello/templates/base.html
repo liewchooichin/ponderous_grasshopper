@@ -103,6 +103,7 @@
               </li>
                 <!--Start of dropdown-->
                 <!--Member's area-->
+                {% if user.is_authenticated %} 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Members' area
@@ -122,6 +123,7 @@
                     Delete an ads</a></li>
                   </ul>
                   </li>
+                  {% endif %}
                 <!--Other general area-->
 
                 <li><hr class="dropdown-divider"></li>
