@@ -5,6 +5,12 @@
 {% block content %}
 <h1>Login</h1>
 
+    <p>
+        {% if form.errors %}
+            <p>Your username and password didn't match. Please try again.</p>
+        {% endif %}
+    </p>
+
 <form method="POST">
     <!--The object called form has a method called .as_p() 
     that renders the <input> tags of the login url_page.
@@ -13,7 +19,6 @@
     {% csrf_token %}
 
     {{ form.as_p }}
-
     <p>
         <input type="checkbox" id="toggle_password" 
         name="toggle_password">
