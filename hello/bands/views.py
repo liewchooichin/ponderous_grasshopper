@@ -280,7 +280,7 @@ def display_userprofile(request):
     """Display profile of a user"""
     # getattr of a user
     userprofile = getattr(request.user, "userprofile", None)
-    print(userprofile.user)
+    
     data.update({
         "title": "User Profile",
         "userprofile": (userprofile if userprofile else "None"),

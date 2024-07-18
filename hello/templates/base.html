@@ -31,7 +31,7 @@
               <!--Various password form-->
               <p>
               <form id="password-change-form" method="POST"
-                action={% url 'password_change' %}>
+                action="{% url 'password_change' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-light">Change password</button>
               </form>
@@ -39,7 +39,7 @@
 
               <p>
               <form id="logout-form" method="POST" 
-                action={% url 'logout' %} >
+                action="{% url 'logout' %}" >
                 {% csrf_token %}
                 <button type="submit" class="btn btn-light">Logout</button>
               </form>
@@ -47,7 +47,7 @@
               {% else %}
                 <p>
                 <form id="login-form" method="POST"
-                  action={% url 'login' %}>
+                  action="{% url 'login' %}">
                   {% csrf_token %}
                   <button type="submit" class="btn btn-light">Login</button>
                 </form>
@@ -55,10 +55,14 @@
 
                 <p>
                   <form id="password-reset-form" method="POST"
-                  action={% url 'password_reset' %}>
+                  action="{% url 'password_reset' %}">
                   {% csrf_token %}
                   <button type="submit" class="btn btn-light">Forget password</button>
                 </form>
+                </p>
+                <p>
+                  <a href="{% url 'user_signup' %}" class="btn btn-light">
+                    Sign up</a>
                 </p>
               {% endif %}
             </div>

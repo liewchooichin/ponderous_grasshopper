@@ -1,0 +1,82 @@
+<!--User signup form-->
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} Sign up
+{% endblock title %}
+
+{% block content %}
+
+<h1>Sign up for new users</h1>
+
+<p>
+    {% if form.errors %}
+        <p>Please fill in all the fields.</p>
+    {% endif %}
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <!--data-->
+    <!--fields: username, first_name, last_name, email, password-->
+    <!--username-->
+    <label class="form-label" id="id_username" 
+    >Username *</label>
+    <input class="form-control" id="id_username" 
+        type="text" name="username"
+       size="100" required>
+    <!--first_name-->
+    <label class="form-label" id="id_first_name">
+        First name *</label>
+    <input class="form-control" id="id_first_name" 
+        type="text" name="first_name"
+       size="100" required>
+    <!--last_name-->
+    <label class="form-label" id="id_last_name">
+        Last name *</label>
+    <input class="form-control" id="id_last_name" 
+        type="text" name="last_name"
+       size="100" required >       
+    <!--Email-->
+    <label class="form-label" id="id_email">
+        Email *</label>
+    <input class="form-control" id="id_email" 
+        type="email" name="email"
+       size="100" required>
+    <!--Password-->
+    <label class="form-label" id="id_password" aria-required>
+        Password *</label>
+    <input class="form-control" id="id_password" 
+        type="text" name="password"
+       size="100" required>
+    <!--Musician profile-->
+    <label class="form-label" id="id_musician_profiles">
+            Musician profile</label>
+    <select class="form-select" id="id_musician_password" 
+        name="musician_profiles">
+        <option value="0">---Select a profile---</option>
+        {% for item in musician_profiles %}
+            <option value="{{item.id}}">
+                {{item.first_name}} {{item.last_name}}
+            </option>
+        {% empty %}
+        <option value="">No profiles</option>
+        {% endfor %}
+    </select>
+    <!--Venue-->
+    <label class="form-label" id="id_venues_operated">
+        Venues operated</label>
+    <select class="form-select" id="id_venues_operated"
+        name="venues_operated">
+        <option value="0">---Select a venue---</option>
+        {% for item in venues_operated %}
+            <option value="{{item.id}}">{{item.name}}</option>
+        {% empty %}
+            <option value="">No venues</option>
+        {% endfor %}
+    </select>
+    <!--submit-->
+    <button type="submit" class="btn btn-primary">Sign up</button>
+</form>
+
+{% endblock content %}

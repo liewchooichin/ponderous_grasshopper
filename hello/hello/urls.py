@@ -58,6 +58,9 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     # Include content app
     path("content/", include("content.urls")),
+    # New user signup
+    path(route="user_signup/", 
+         view=home_views.user_signup, name="user_signup"),
 ]
 
 

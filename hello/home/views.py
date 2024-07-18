@@ -43,7 +43,7 @@ from django.contrib.auth.views import PasswordResetView
 from django.utils.http import urlsafe_base64_encode
 
 from .forms import MyPasswordResetForm
-from bands.models import User
+
 
 # My own custome password reset handling view
 # URL patterns for accounts: 
@@ -122,9 +122,10 @@ def credits(request):
 
 def about(request):
     """Return the about message"""
-    content ="About this project. \
-        This is the simplest possible view in Django."
-    return HttpResponse(content=content, content_type="text/plain")
+    data = {"content": "About this project.\
+        This is the simplest possible view in Django."}
+    return render(request=request,
+                  template_name="about.html", context=data)
 
 def version(request):
     """Version of the app"""
@@ -182,3 +183,55 @@ def index(request):
     # to the index page, then update the data (local variable) here.
     data = index_data
     return render(request=request, template_name="base_index.html", context=data)
+
+# New user signup
+from home.forms import SignupForm
+from django.shortcuts import redirect
+from bands.models import Musician, Venue, UserProfile
+from bands.models import User
+
+def user_signup(request):
+    """A form for new user to sign up to use the website"""
+    if request.method == "GET":
+        form = SignupForm()
+    elif request.method == "POST":
+        # create a new, empty User for the form
+        #new_user = UserProfile.objects.create()
+        #new_user = User.objects.create_user()
+        form = SignupForm(
+            data=request.POST,
+        )
+        # If form is valid, save the user
+        if form.is_valid():
+            ### for debugging
+            for k, v in request.POST.items():
+                print(f"{k}: {v}")
+            
+            new_user = User.objects.create_user(
+                username=request.POST.get("username", ""),
+                first_name = request.POST.get("first_name", ""),
+                last_name = request.POST.get("last_name", ""),
+                email=request.POST.get("email", ""),
+                password=request.POST.get("password", ""),
+            )
+            new_user.is_staff = False
+            new_user.is_active = True
+            new_user.is_superuser = False
+            new_user.date_joined = date.today()
+            new_user.save() # save the new user
+
+            # if signup is successful, redirect to login page.
+            return redirect("login")
+        else:
+            print("form is not valid")
+    # Was a GET or form is not valid
+    data = {
+        "musician_profiles": Musician.objects.all(),
+        "venues_operated": Venue.objects.all(),
+        "form": form,
+    }
+    return render(request=request,
+                  template_name="user_signup.html",
+                  context=data)
+
+            

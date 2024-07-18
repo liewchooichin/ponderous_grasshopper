@@ -4,6 +4,8 @@ from django import forms
 from django.contrib.auth.forms import PasswordResetForm
 from django.core.mail import send_mail
 from .azure_email import send_with_azure_email
+from django.contrib import auth
+from bands.models import UserProfile
 
 
 class MyPasswordResetForm(PasswordResetForm):
@@ -29,3 +31,10 @@ class MyPasswordResetForm(PasswordResetForm):
     #          from_email=from_email,
     #          recipient_list=["liewchooichin@gmail.com"]
     #         )
+
+class SignupForm(forms.Form):
+    class Meta:
+        #model = UserProfile
+        model = auth.models.User
+        fields = ["username", "first_name", "last_name",
+                    "email", "password"]
