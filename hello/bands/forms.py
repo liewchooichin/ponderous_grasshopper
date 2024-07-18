@@ -21,4 +21,10 @@ class VenueForm(ModelForm):
         fields = ["id", "name", "description", "picture"]
     
 
-
+class MusicianForm(ModelForm):
+    """Form to add a musician"""
+    class Meta:
+        model = Musician
+        fields = ["id", "first_name", "last_name",
+                 "birth", "style", "description",
+                 "picture"]

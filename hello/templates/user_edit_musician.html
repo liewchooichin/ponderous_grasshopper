@@ -1,0 +1,21 @@
+<!--Add or edit musician profile-->
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} {{ title }}
+{% endblock title %}
+
+{% block content %}
+<h1>Add or edit a musician profile</h1>
+
+<p>
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <!--data-->
+        {{ form.as_p }}
+        <!--submit-->
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</p>
+
+{% endblock content %}

@@ -25,8 +25,10 @@
         <a class="navbar-brand" href="{% url 'index' %}">RiffMates</a>
             <!--login logout button-->
             <div>
-              {% if user.is_authenticated %}                
+              {% if user.is_authenticated %}      
+              <!--Display the username-->          
               <p class="text-white bg-dark">{{ user.username }}</p>
+              <!--Various password form-->
               <p>
               <form id="password-change-form" method="POST"
                 action={% url 'password_change' %}>
@@ -109,18 +111,28 @@
                     Members' area
                   </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{% url 'put_an_ads' %}">Put an ads</a></li>
-                <li><a class="dropdown-item" href="{% url 'user_edit_ads' %}">User edit ads</a></li>
+                  <!--musician profile view-->
+                  <li><a class="dropdown-item" href="{% url 'user_list_musician' %}">
+                    List my musicians</a></li>
+                  <li><a class="dropdown-item" href="{% url 'user_list_musician' %}">
+                    Edit musician profile</a></li>
+                  <li><a class="dropdown-item" href="{% url 'user_add_musician' 0 %}">
+                    Add musician profile</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <!--ads custom view-->
+                  <li><a class="dropdown-item" href="{% url 'put_an_ads' %}">Put an ads</a></li>
+                  <li><a class="dropdown-item" href="{% url 'user_edit_ads' %}">User edit ads</a></li>
                 <li><hr class="dropdown-divider"></li>
+                <!--ads generic view-->
                   <li><a class="dropdown-item" 
                     href="{% url 'seeking_ads_generic_create_view' %}">
-                      Create an ads</a></li>
+                      Create ads</a></li>
                   <li><a class="dropdown-item" 
                     href="{% url 'seeking_ads_generic_update_view' 2 %}">
-                    Update an ads</a></li>
+                    Update ads</a></li>
                   <li><a class="dropdown-item" 
                     href="{% url 'seeking_ads_generic_delete_view' 3 %}">
-                    Delete an ads</a></li>
+                    Delete ads</a></li>
                   </ul>
                   </li>
                   {% endif %}
