@@ -33,8 +33,16 @@ class MyPasswordResetForm(PasswordResetForm):
     #         )
 
 class SignupForm(forms.Form):
+    """For new user signup"""
     class Meta:
-        #model = UserProfile
         model = auth.models.User
         fields = ["username", "first_name", "last_name",
-                    "email", "password"]
+                    "email", "password","musician_profiles",
+                    "venues_operated"]
+        
+class UserProfileEditForm(forms.ModelForm):
+    """To edit user profile"""
+    class Meta:
+        model = UserProfile
+        fields = ["user", "musician_profiles", "venues_operated"]
+        

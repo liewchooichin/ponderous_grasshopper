@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<h1>Sign up for new users</h1>
+<h1>Edit user profile</h1>
 
 <p>
     {% if form.errors %}
@@ -24,36 +24,36 @@
     >Username *</label>
     <input class="form-control" id="id_username" 
         type="text" name="username"
-       size="100" required>
+        size="100" required
+        value = {{ user.username }}>
+       
     <!--first_name-->
     <label class="form-label" id="id_first_name">
         First name *</label>
     <input class="form-control" id="id_first_name" 
         type="text" name="first_name"
-       size="100" required>
+        size="100" required
+        value = {{ user.first_name }}>
     <!--last_name-->
     <label class="form-label" id="id_last_name">
         Last name *</label>
     <input class="form-control" id="id_last_name" 
         type="text" name="last_name"
-       size="100" required >       
+        size="100" required 
+        value = {{ user.last_name }}>       
     <!--Email-->
     <label class="form-label" id="id_email">
         Email *</label>
     <input class="form-control" id="id_email" 
         type="email" name="email"
-       size="100" required>
-    <!--Password-->
-    <label class="form-label" id="id_password" aria-required>
-        Password *</label>
-    <input class="form-control" id="id_password" 
-        type="text" name="password"
-       size="100" required>
+        size="100" required
+        value = {{ user.email }}>
+
     <!--Musician profile-->
-    <label class="form-label" id="id_musician_profiles" hidden>
+    <label class="form-label" id="id_musician_profiles">
             Musician profile</label>
     <select class="form-select" id="id_musician_password" 
-        name="musician_profiles" hidden>
+        name="musician_profiles" size=5 multiple>
         <option value="0">---Select a profile---</option>
         {% for item in musician_profiles %}
             <option value="{{item.id}}">
@@ -64,10 +64,10 @@
         {% endfor %}
     </select>
     <!--Venue-->
-    <label class="form-label" id="id_venues_operated" hidden>
+    <label class="form-label" id="id_venues_operated">
         Venues operated</label>
     <select class="form-select" id="id_venues_operated"
-        name="venues_operated" hidden>
+        name="venues_operated" size=5 multiple>
         <option value="0">---Select a venue---</option>
         {% for item in venues_operated %}
             <option value="{{item.id}}">{{item.name}}</option>
@@ -76,7 +76,7 @@
         {% endfor %}
     </select>
     <!--submit-->
-    <button type="submit" class="btn btn-primary">Sign up</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
 {% endblock content %}

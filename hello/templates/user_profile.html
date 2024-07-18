@@ -11,12 +11,12 @@
 {% if user.is_authenticated %}
    <h2>Personal details</h2>
     <ul class="list-group">
-        <li class="list-group-item">ID: {{ userprofile.id}}</li>
-        <li class="list-group-item">Username: {{ userprofile.user}}</li>
+        <li class="list-group-item">ID: {{ user.id}}</li>
+        <li class="list-group-item">Username: {{ user.username}}</li>
         <li class="list-group-item">
-            Name: {{ userprofile.user.first_name}} {{ userprofile.user.last_name}}
+            Name: {{ user.first_name}} {{ user.last_name}}
         </li>
-        <li class="list-group-item">Email: {{ userprofile.user.email}}</li>
+        <li class="list-group-item">Email: {{ user.email}}</li>
     </ul>
 
     <h2>Musicians</h2>

@@ -218,7 +218,21 @@ def user_signup(request):
             new_user.is_active = True
             new_user.is_superuser = False
             new_user.date_joined = date.today()
+            # Save a default user profile
+            """
+            profile = UserProfile()
+            profile.id = len(UserProfile.objects.all()) + 1
+            profile.user = new_user
+            musician = Musician.objects.get(id=request.POST.get("musician_profiles", ""))
+            venue = Venue.objects.get(id=request.POST.get("venues_operated", ""))
+            profile.musician_profiles.add(musician)
+            profile.venues_operated.add(venue)
+            profile.save() # save the new profile
+            """
             new_user.save() # save the new user
+            form.save() # save the form
+            #form.save_m2m() # save m2m
+            
 
             # if signup is successful, redirect to login page.
             return redirect("login")
@@ -226,12 +240,77 @@ def user_signup(request):
             print("form is not valid")
     # Was a GET or form is not valid
     data = {
-        "musician_profiles": Musician.objects.all(),
-        "venues_operated": Venue.objects.all(),
+        #"musician_profiles": Musician.objects.all(),
+        #"venues_operated": Venue.objects.all(),
         "form": form,
     }
     return render(request=request,
                   template_name="user_signup.html",
                   context=data)
 
+# Edit user profile
+from home.forms import UserProfileEditForm
             
+def edit_user_profile(request):
+    """A view to update/edit user profile"""
+    # Get the profile of the current user, if
+    # the profile does not exists, create a new one.
+    has_profile = hasattr(request.user, "userprofile")
+    print(f"\tUser profile exists: {has_profile=}")
+
+    if has_profile is True:
+        profile = request.user.userprofile
+
+    # GET
+    if request.method == "GET":
+        # print the profile for debug
+        # if there is no profile, make a new form
+        if has_profile is False:
+            form = UserProfileEditForm()
+        else:
+            form = UserProfileEditForm(instance=profile)
+    # POST
+    elif request.method == "POST":
+        if has_profile is False:
+            profile = UserProfile.objects.create()
+        
+        form = UserProfileEditForm(data=request.POST,
+                                   instance=profile)
+
+        # if form is valid
+        if form.is_valid():
+            for k, v in request.POST.items():
+                print(f"{k}: {v}")
+
+            profile = form.save(commit=False)
+            #request.user.userprofile.user = request.user
+            musician = Musician.objects.get(
+                id=request.POST.musician_profiles.id
+            )
+            print(f"\t{musician=}")
+            venue = Venue.objects.get(
+                id=request.POST.venues_operated.id
+            )
+            print(f"\t{venue=}")
+            profile.save()
+            print(f"\t{profile=}")
+            # save many-to-many
+            form.save_m2m()
+            request.user.userprofile = profile
+            return redirect("user_profile")
+
+    # Was a GET or form is not valid
+    if has_profile is True:
+        musician_profiles = profile.musician_profiles.all()
+        venues_operated = profile.venues_operated.all()
+    else:
+        musician_profiles = Musician.objects.all()
+        venues_operated = Venue.objects.all()
+    data = {
+        "musician_profiles": musician_profiles, #Musician.objects.all(),
+        "venues_operated": venues_operated, #Venue.objects.all(),
+        "form": form,
+    }
+    return render(request=request,
+                  template_name="edit_user_profile.html",
+                  context=data)

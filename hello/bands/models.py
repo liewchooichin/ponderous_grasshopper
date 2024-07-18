@@ -140,7 +140,7 @@ class BandGroup(models.Model):
     """A group can have many musicians. Many-to-many relationship."""
     id = models.SmallAutoField(primary_key=True)
     name = models.CharField(max_length=20, default="Band Group", verbose_name="Band group")
-    members = models.ManyToManyField(to="bands.Musician", verbose_name="Members")
+    members = models.ManyToManyField(to="bands.Musician", verbose_name="Members", blank=True)
     
     # Meta
     class Meta:
