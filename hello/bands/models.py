@@ -17,15 +17,20 @@ class Musician(models.Model):
     first_name = models.CharField(
         verbose_name="First name",
         max_length=50,
-        help_text="First name",
+        #help_text="First name",
+        error_messages="Enter your first name",
     )
     last_name = models.CharField(
         verbose_name="Last name",
         max_length=50,
-        help_text="Last name",
+        #help_text="Last name",
+        error_messages="Enter your last name",
     )
     birth = models.DateField(
         verbose_name = "Date of birth",
+        blank=True,
+        #help_text="Data of birth",
+        error_messages="Enter your date of birth",
     )
     # choices of music
     STYLE_MUSIC = {
@@ -38,7 +43,22 @@ class Musician(models.Model):
         max_length=4,
         choices=STYLE_MUSIC,
         default="RELA", 
-        help_text="Main style of music",
+        #help_text="Main style of music",
+        error_messages="Choose your style of music",
+    )
+    description = models.TextField(
+        verbose_name="Description",
+        max_length=300,
+        blank=True,
+        #help_text="Description of your profile",
+        error_messages="Enter a description"
+    )
+    picture = models.ImageField(
+        verbose_name="Your profile picture",
+        max_length=500000, # 500KB,
+        blank=True, null=True,
+        help_text="Photo in JPG and PNG format only. Not more than 500KB.",
+        error_messages="Upload a picture",
     )
 
     # Meta

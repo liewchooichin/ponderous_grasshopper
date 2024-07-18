@@ -29,6 +29,16 @@
                 Birth date:{{ item.birth }}
                 <br>
                 Style: {{ item.style }}
+                <br>
+                Description: {{ item.description }}
+                <br>
+                {% if item.picture.ul %}
+                <img src="{{ item.picture.url }}"
+                  class="img-fluid width='200' height='200'"
+                  alt="{{ photo }}">
+                {% else %}
+                    No photo
+                {% endif %}
             </li>
         {% empty %}
             <li class="list-group-item">No musician profiles</li>

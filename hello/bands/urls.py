@@ -32,5 +32,13 @@ urlpatterns = [
           view=band_views.venue_edit, name="venue_edit"),
      path(route="user_profile/",
           view=band_views.display_userprofile, name="user_profile"),
+     path(route="user_add_musician/<int:musician_id>/", 
+          view=band_views.user_edit_musician, name="user_add_musician"),
+     path(route="user_edit_musician/<int:musician_id>/", 
+          view=band_views.user_edit_musician, name="user_edit_musician"),
+     path(route="user_list_musician", 
+          view=band_views.user_list_musician, 
+          name="user_list_musician"),
+
 ]
 
