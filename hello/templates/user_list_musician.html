@@ -13,19 +13,6 @@
 </p>
 
 <p>
-    <h2>
-        Musician {{ musicians|length }}
-        <br>
-        request.user.id {{ request.user.id }}
-        <br>
-        owner {{ request.user.userprofile.user.id}}
-        <br>
-        musicians list {{ request.user.userprofile.musician_profiles.all }}
-    </h2>
-
-</p>
-
-<p>
     <!--Content-->
     <ul class="list-group">
         {% for m in musicians %}
