@@ -61,6 +61,9 @@ urlpatterns = [
     # New user signup
     path(route="user_signup/", 
          view=home_views.user_signup, name="user_signup"),
+    # edit user profile
+    path(route="edit_user_profile/", 
+         view=home_views.edit_user_profile, name="edit_user_profile"),
 ]
 
 
